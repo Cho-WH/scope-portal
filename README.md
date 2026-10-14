@@ -49,6 +49,7 @@ npm run new:tool -- pendulum
 - 수업 자료는 `src/content/resources/`에 추가하고 `toolIds`로 도구와 연결합니다.
 - 자세한 작업 방법: [유지보수 가이드](docs/maintenance.md)
 - 모듈 경계와 설계 이유: [아키텍처](docs/architecture.md)
+- 다음 미리보기 구현 설계: [계산 결과를 저장하는 코드 애니메이션](docs/preview-animation-design.md)
 
 ## 검증과 빌드
 
