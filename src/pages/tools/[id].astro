@@ -1,0 +1,17 @@
+---
+import PortalLayout from '../../layouts/PortalLayout.astro';
+import ToolDetail from '../../features/tool-detail/ToolDetail.astro';
+import { loadCatalog } from '../../lib/catalog/load';
+import type { Tool, Resource } from '../../lib/catalog/schema';
+export async function getStaticPaths() {
+  const { tools, resources } = await loadCatalog();
+  return tools.map(tool => ({ params: { id: tool.id }, props: {
+    tool,
+    resources: resources.filter(r => r.toolIds.includes(tool.id)),
+    related: tools.filter(t => t.id !== tool.id && t.topics.some(topic => tool.topics.includes(topic))).slice(0, 2),
+  } }));
+}
+interface Props { tool: Tool; resources: Resource[]; related: Tool[] }
+const { tool, resources, related } = Astro.props;
+---
+<PortalLayout title={tool.name} description={tool.summary}><ToolDetail tool={tool} resources={resources} related={related} /></PortalLayout>

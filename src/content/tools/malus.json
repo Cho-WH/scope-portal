@@ -1,0 +1,40 @@
+{
+  "name": "편광과 말루스 법칙",
+  "summary": "편광판 각도와 빛의 세기 비교하기",
+  "description": "편광판의 각도를 바꾸며 빛의 세기를 측정하고 각도에 따른 변화를 분석합니다. 센서 외에 편광 실험 장치가 필요합니다.",
+  "topics": [
+    "waves"
+  ],
+  "activity": "measurement",
+  "equipment": [
+    "micro:bit",
+    "서보",
+    "빛 센서",
+    "편광 실험 장치"
+  ],
+  "environment": "Web Bluetooth 지원 브라우저",
+  "launchUrl": "https://cho-wh.github.io/MalussBit/",
+  "sourceUrl": "https://github.com/Cho-WH/MalussBit",
+  "keywords": [
+    "마이크로비트",
+    "microbit",
+    "편광판",
+    "조도",
+    "광학",
+    "malus"
+  ],
+  "capabilities": [
+    "편광판 각도에 따른 빛의 세기 측정",
+    "각도와 측정값 분석",
+    "측정 자료 저장"
+  ],
+  "order": 60,
+  "draft": false,
+  "thumbnail": {
+    "src": "/images/tools/malus.jpg",
+    "alt": "장치 연결 전 편광 실험의 측정 제어와 피팅 화면",
+    "width": 1280,
+    "height": 800,
+    "fit": "cover"
+  }
+}

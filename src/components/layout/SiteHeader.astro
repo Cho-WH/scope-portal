@@ -1,0 +1,15 @@
+<header class="site-header container">
+  <a class="brand" href="/" aria-label="sco.pe.kr 홈" translate="no">sco<span>.</span>pe.kr</a>
+  <nav aria-label="주 메뉴">
+    <a href="/#tools">도구 찾기</a>
+    <a href="/#resources">수업 자료</a>
+  </nav>
+</header>
+<style>
+  .site-header { min-height: 72px; display: flex; justify-content: space-between; align-items: center; gap: 20px; border-bottom: 1px solid var(--color-line); }
+  .brand { display: inline-flex; align-items: center; min-height: 44px; font-size: 25px; letter-spacing: -1px; font-weight: 700; }
+  .brand span { color: var(--color-accent); }
+  nav { display: flex; gap: 26px; }
+  nav a { display: flex; align-items: center; min-height: 44px; font-size: 14px; font-weight: 500; white-space: nowrap; }
+  @media (max-width: 679px) { .site-header { min-height: 60px; gap: 10px; } .brand { font-size: 23px; } nav { gap: 18px; } nav a { font-size: 13px; } }
+</style>

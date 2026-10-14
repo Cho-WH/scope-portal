@@ -1,0 +1,39 @@
+{
+  "name": "센서 데이터 대시보드",
+  "summary": "센서에 맞춰 측정 항목과 그래프 구성하기",
+  "description": "측정 항목과 단위를 설정하고 그래프와 기록을 구성합니다. 설정한 화면을 링크·QR로 공유할 수 있습니다.",
+  "topics": [
+    "general"
+  ],
+  "activity": "measurement",
+  "equipment": [
+    "micro:bit",
+    "사용할 센서"
+  ],
+  "environment": "Web Bluetooth 지원 브라우저",
+  "launchUrl": "https://cho-wh.github.io/MicrobitSensorDashboard/",
+  "sourceUrl": "https://github.com/Cho-WH/MicrobitSensorDashboard",
+  "keywords": [
+    "마이크로비트",
+    "microbit",
+    "CSV",
+    "데이터",
+    "공유",
+    "QR",
+    "분석"
+  ],
+  "capabilities": [
+    "측정 항목·단위 설정",
+    "그래프와 측정 기록",
+    "설정 링크·QR 공유"
+  ],
+  "order": 100,
+  "draft": false,
+  "thumbnail": {
+    "src": "/images/tools/sensor.jpg",
+    "alt": "장치 연결을 기다리는 센서 데이터 대시보드 화면",
+    "width": 1280,
+    "height": 800,
+    "fit": "cover"
+  }
+}

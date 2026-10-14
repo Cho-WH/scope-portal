@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 230" width="520" height="230" role="img" aria-labelledby="title desc">
+  <title id="title">전위를 높이로 나타낸 직렬 회로</title>
+  <desc id="desc">회로봄 소개를 위한 정적 예시 그림입니다. 미리보기 조작은 아직 제공하지 않습니다.</desc>
+  <path d="M55 168 175 98 450 125 327 201Z" fill="#edf2f8"/>
+  <path d="M175 98V40M450 125V101" stroke="#cad4df" stroke-dasharray="3 4"/>
+  <path d="M55 168 112 107M129 89 175 40 268 49 280 61 292 58 304 70 316 67 328 79 340 76 352 88 450 101" fill="none" stroke="#d55a42" stroke-width="3.5" stroke-linejoin="round"/>
+  <path d="m109 90 20 15m-13-26 27 20" stroke="#18354b" stroke-width="2.5"/>
+  <path d="M450 101 411 125 411 135 400 137 400 148 389 150 389 161 378 163 378 174 327 201" stroke="#168588" stroke-width="3.5" fill="none" stroke-linejoin="round"/>
+  <path d="m327 201-272-33" stroke="#2d5bdc" stroke-width="3.5"/>
+  <circle cx="175" cy="40" r="4" fill="#d55a42"/><circle cx="450" cy="101" r="4" fill="#168588"/><circle cx="327" cy="201" r="4" fill="#2d5bdc"/>
+  <g font-family="sans-serif" font-size="13" fill="#18354b">
+    <text x="175" y="25" text-anchor="middle">6 V</text>
+    <text x="450" y="85" text-anchor="middle">3 V</text>
+    <text x="333" y="221">0 V</text>
+    <text x="310" y="42" text-anchor="middle">100 Ω</text>
+    <text x="423" y="167">100 Ω</text>
+    <text x="74" y="112" text-anchor="middle">전원</text>
+  </g>
+</svg>

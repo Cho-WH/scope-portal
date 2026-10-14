@@ -1,0 +1,37 @@
+{
+  "name": "온습도·기압 측정기",
+  "summary": "주변 환경의 변화를 그래프로 기록하기",
+  "description": "micro:bit와 BME280을 연결해 온도·습도·기압을 실시간 그래프로 살펴보고 측정 자료를 저장합니다.",
+  "topics": [
+    "thermal"
+  ],
+  "activity": "measurement",
+  "equipment": [
+    "micro:bit",
+    "BME280"
+  ],
+  "environment": "Web Bluetooth 지원 브라우저",
+  "launchUrl": "https://cho-wh.github.io/bme280/",
+  "sourceUrl": "https://github.com/Cho-WH/bme280",
+  "keywords": [
+    "온도",
+    "습도",
+    "대기",
+    "환경",
+    "마이크로비트",
+    "microbit"
+  ],
+  "capabilities": [
+    "온도·습도·기압 실시간 그래프",
+    "측정 자료 저장"
+  ],
+  "order": 90,
+  "draft": false,
+  "thumbnail": {
+    "src": "/images/tools/bme.jpg",
+    "alt": "장치 연결을 기다리는 온습도·기압 측정 화면",
+    "width": 1280,
+    "height": 800,
+    "fit": "cover"
+  }
+}

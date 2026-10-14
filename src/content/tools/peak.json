@@ -1,0 +1,29 @@
+{
+  "name": "소리 주파수 분석기",
+  "summary": "마이크로 받은 소리의 주파수 살피기",
+  "description": "마이크로 입력한 소리의 주요 주파수를 확인하고 시간에 따른 변화를 기록·다운로드합니다.",
+  "topics": [
+    "waves"
+  ],
+  "activity": "audio",
+  "equipment": [
+    "마이크"
+  ],
+  "environment": "마이크 사용 권한 필요",
+  "launchUrl": "https://cho-wh.github.io/peakHz/",
+  "sourceUrl": "https://github.com/Cho-WH/peakHz",
+  "keywords": [
+    "음파",
+    "진동수",
+    "음성",
+    "peak",
+    "Hz"
+  ],
+  "capabilities": [
+    "주요 주파수 확인",
+    "시간에 따른 주파수 기록",
+    "측정 자료 다운로드"
+  ],
+  "order": 80,
+  "draft": false
+}

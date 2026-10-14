@@ -1,0 +1,18 @@
+---
+import type { Tool } from '../../lib/catalog/schema';
+import { activityLabel, topicLabel } from '../../lib/catalog/taxonomy';
+interface Props { tool: Tool }
+const { tool } = Astro.props;
+---
+<dl class="tool-facts">
+  <div><dt>활동</dt><dd>{activityLabel(tool.activity)}</dd></div>
+  <div><dt>주제</dt><dd>{tool.topics.map(topicLabel).join(' · ')}</dd></div>
+  <div><dt>준비물</dt><dd>{tool.equipment.join(', ')}</dd></div>
+  <div><dt>사용 환경</dt><dd>{tool.environment}</dd></div>
+</dl>
+<style>
+  .tool-facts { margin: 0; display: grid; gap: 16px; font-size: 14px; }
+  .tool-facts div { display: grid; grid-template-columns: 70px minmax(0, 1fr); gap: 10px; }
+  dt { color: var(--color-muted); }
+  dd { margin: 0; word-break: keep-all; }
+</style>

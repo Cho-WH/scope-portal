@@ -1,0 +1,15 @@
+{
+  "name": "새 도구 이름",
+  "summary": "목록에서 도구의 용도를 설명하는 한 문장",
+  "description": "도구 소개 페이지에 표시할 설명",
+  "topics": ["general"],
+  "activity": "simulation",
+  "equipment": ["필요한 준비물을 확인해 입력하세요"],
+  "environment": "확인한 지원 환경을 입력하세요",
+  "launchUrl": "https://example.com/",
+  "keywords": [],
+  "capabilities": [],
+  "notes": [],
+  "order": 100,
+  "draft": true
+}

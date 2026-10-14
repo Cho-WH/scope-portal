@@ -1,0 +1,5 @@
+{
+  "title": "회로봄 사용 설명서", "description": "회로 만들기, 분석과 회로도 출력 기능 안내",
+  "kind": "teacher-guide", "url": "https://github.com/Cho-WH/circuit/blob/main/docs/ux/quick-start.md",
+  "toolIds": ["circuit"], "order": 40, "draft": false
+}

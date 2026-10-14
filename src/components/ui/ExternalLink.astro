@@ -1,0 +1,5 @@
+---
+interface Props { href: string; label: string; class?: string; accessibleLabel?: string }
+const { href, label, class: className, accessibleLabel = label } = Astro.props;
+---
+<a href={href} class={className} target="_blank" rel="noopener noreferrer" aria-label={`${accessibleLabel} (새 탭)`}>{label}</a>

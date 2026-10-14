@@ -1,0 +1,62 @@
+---
+import type { Tool } from '../../lib/catalog/schema';
+import { topics, activities } from '../../lib/catalog/taxonomy';
+import FeaturedToolCard from '../../components/catalog/FeaturedToolCard.astro';
+import CompactToolCard from '../../components/catalog/CompactToolCard.astro';
+interface Props { tools: Tool[] }
+const { tools } = Astro.props;
+---
+<section class="catalog" id="tools" data-catalog aria-labelledby="catalog-title">
+  <div class="catalog-heading"><h2 id="catalog-title">실험·측정 도구</h2>
+    <form class="search" role="search" action="/#tools" method="get" data-search-form>
+      <label class="sr-only" for="tool-search">실험 도구 검색</label>
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10" cy="10" r="6.5" /><path d="m15 15 5 5" /></svg>
+      <input type="search" name="q" id="tool-search" placeholder="회로, 소리, 마이크로비트…" autocomplete="off" spellcheck="false" maxlength="160" />
+      <button type="button" class="search-clear" data-clear aria-label="검색어 지우기" hidden>지우기</button>
+    </form>
+  </div>
+  <div class="catalog-toolbar">
+    <div class="topic-filter" role="group" aria-label="주제 선택"><button type="button" data-topic="all" aria-pressed="true">전체</button>{topics.map(t => <button type="button" data-topic={t.id} aria-pressed="false">{t.label}</button>)}</div>
+    <div class="activity-filter"><label for="activity-filter">활동</label><select id="activity-filter" name="activity"><option value="all">모든 활동</option>{activities.map(a => <option value={a.id}>{a.label}</option>)}</select></div>
+    <div class="catalog-status"><p data-result-count role="status" aria-live="polite">전체 {tools.length}개 도구</p><button type="button" data-reset hidden>초기화</button></div>
+  </div>
+  <noscript><p class="no-script">모든 도구가 표시되어 있습니다. 검색과 필터는 자바스크립트를 켜면 사용할 수 있습니다.</p></noscript>
+  <div class="tool-grid">{tools.map((tool, i) => i < 3 ? <FeaturedToolCard tool={tool} /> : <CompactToolCard tool={tool} />)}</div>
+  <div class="empty-state" data-empty hidden><h3>조건에 맞는 도구가 없어요.</h3><p>검색어를 줄이거나 주제와 활동 조건을 초기화해 보세요.</p><button class="button" type="button" data-reset>전체 도구 보기</button></div>
+</section>
+<script>import './catalog.ts';</script>
+<style>
+  .catalog { border-top: 1px solid var(--color-line); padding-top: 26px; scroll-margin-top: 18px; }
+  .catalog-heading { display: flex; justify-content: space-between; align-items: center; gap: 24px; margin-bottom: 18px; }
+  .search { display: flex; align-items: center; gap: 10px; width: 44%; min-width: 270px; border: 1px solid var(--color-line); border-radius: var(--radius-control); padding: 0 12px; }
+  .search:focus-within { border-color: var(--color-accent); }
+  .search svg { flex: none; color: var(--color-muted); }
+  .search input { width: 100%; min-width: 0; min-height: 46px; border: 0; background: transparent; font-size: 16px; }
+  .search input::placeholder { color: var(--color-muted); opacity: 1; }
+  .search-clear { padding: 0; background: transparent; min-width: 44px; min-height: 44px; color: var(--color-muted); font-size: 13px; }
+  .search-clear:hover { color: var(--color-accent); }
+  .catalog-toolbar { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 7px 16px; align-items: center; }
+  .topic-filter { display: flex; flex-wrap: wrap; gap: 3px; }
+  .topic-filter button { background: transparent; padding: 8px 12px; min-height: 44px; min-width: 44px; border-radius: 5px; font-size: 14px; color: var(--color-muted); }
+  .topic-filter button:hover { background: var(--color-mist); color: var(--color-ink); }
+  .topic-filter button[aria-pressed='true'] { background: var(--color-mist); color: var(--color-ink); font-weight: 600; }
+  .activity-filter { display: flex; align-items: center; gap: 10px; color: var(--color-muted); font-size: 13px; }
+  .activity-filter select { border: 1px solid var(--color-line); background: var(--color-paper); color: var(--color-ink); min-height: 44px; padding: 8px; border-radius: 5px; font-size: 16px; }
+  .catalog-status { grid-column: 1/-1; min-height: 32px; display: flex; align-items: center; gap: 15px; color: var(--color-muted); font-size: 13px; }
+  .catalog-status button { min-height: 44px; background: transparent; padding: 0; color: var(--color-accent); font-size: 13px; }
+  .catalog-status button:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .tool-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); column-gap: 28px; align-items: stretch; }
+  .empty-state, .no-script { background: var(--color-mist); padding: 22px; border-radius: var(--radius-panel); }
+  .empty-state p { color: var(--color-muted); margin: 7px 0 12px; }
+  @media (max-width: 679px) {
+    .catalog { padding-top: 20px; }
+    .catalog-heading { display: block; margin-bottom: 10px; }
+    .search { width: 100%; min-width: 0; margin-top: 12px; }
+    .catalog-toolbar { gap: 5px 8px; }
+    .topic-filter { grid-column: 1/-1; gap: 1px; }
+    .topic-filter button { font-size: 12px; padding: 8px; }
+    .activity-filter { grid-column: 2; grid-row: 2; gap: 6px; font-size: 12px; }
+    .catalog-status { grid-column: 1; grid-row: 2; font-size: 12px; gap: 10px; min-width: 0; flex-wrap: wrap; }
+    .tool-grid { display: block; }
+  }
+</style>

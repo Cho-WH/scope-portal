@@ -1,0 +1,40 @@
+{
+  "name": "CdS 빛 센서 만들기",
+  "summary": "빛을 전기 신호로 바꾸는 장치 만들기",
+  "description": "전압 분배 원리에서 출발해 배선과 코딩을 따라 빛 센서를 만듭니다. 인쇄용 학생 활동지를 함께 제공합니다.",
+  "topics": [
+    "electricity"
+  ],
+  "activity": "making",
+  "equipment": [
+    "micro:bit",
+    "CdS",
+    "회로 부품"
+  ],
+  "environment": "장치 연결·코딩용 컴퓨터",
+  "launchUrl": "https://cho-wh.github.io/CdS/",
+  "sourceUrl": "https://github.com/Cho-WH/CdS",
+  "keywords": [
+    "조도",
+    "마이크로비트",
+    "microbit",
+    "전압",
+    "저항",
+    "배선",
+    "코딩"
+  ],
+  "capabilities": [
+    "전압 분배 원리 학습",
+    "빛 센서 배선·코딩 안내",
+    "인쇄용 학생 활동지"
+  ],
+  "order": 40,
+  "draft": false,
+  "thumbnail": {
+    "src": "/images/tools/cds.jpg",
+    "alt": "CdS 학습 페이지의 마이크로비트와 브레드보드 배선 회로도",
+    "width": 818,
+    "height": 384,
+    "fit": "contain"
+  }
+}

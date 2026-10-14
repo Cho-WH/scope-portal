@@ -1,0 +1,36 @@
+{
+  "name": "소리 발생기",
+  "summary": "주파수·위상·음량을 조절해 소리 만들기",
+  "description": "좌우 채널의 주파수·위상·음량을 조절합니다. 한국어 버전을 기본으로 제공하며 영어 버전도 사용할 수 있습니다.",
+  "topics": [
+    "waves"
+  ],
+  "activity": "audio",
+  "equipment": [
+    "스피커 또는 헤드폰"
+  ],
+  "environment": "소리 재생이 가능한 브라우저",
+  "launchUrl": "https://cho-wh.github.io/MFGko/",
+  "sourceUrl": "https://github.com/Cho-WH/MFGko",
+  "keywords": [
+    "음파",
+    "진동수",
+    "사운드",
+    "frequency",
+    "MFG",
+    "오실레이터"
+  ],
+  "capabilities": [
+    "좌우 채널 주파수·위상 조절",
+    "음량 조절"
+  ],
+  "order": 70,
+  "draft": false,
+  "thumbnail": {
+    "src": "/images/tools/sound.jpg",
+    "alt": "소리 발생기의 좌우 채널 주파수·볼륨·위상 설정 화면",
+    "width": 982,
+    "height": 376,
+    "fit": "contain"
+  }
+}

@@ -1,0 +1,29 @@
+---
+import type { Resource, Tool } from '../../lib/catalog/schema';
+import ExternalLink from '../ui/ExternalLink.astro';
+interface Props { resources: Resource[]; tools?: Tool[] }
+const { resources, tools = [] } = Astro.props;
+const labels = { worksheet: '활동지', 'teacher-guide': '수업·사용 안내', 'setup-guide': '장치 준비', 'language-version': '다른 언어' };
+---
+<div class="resource-list">
+  {resources.map(resource => <article class="resource">
+    <span class="resource-kind">{labels[resource.kind]}</span>
+    <h3><ExternalLink href={resource.url} label={resource.title} /></h3>
+    <p>{resource.description}</p>
+    {tools.length > 0 && <div class="resource-tools">{resource.toolIds.map(id => {
+      const tool = tools.find(t => t.id === id);
+      return tool && <a href={`/tools/${tool.id}/`}>{tool.name} 소개</a>;
+    })}</div>}
+  </article>)}
+</div>
+<style>
+  .resource-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 28px; }
+  .resource { border-left: 3px solid var(--color-line); padding-left: 16px; }
+  .resource-kind { font-size: 12px; color: var(--color-muted); }
+  .resource h3 { font-size: 15px; }
+  .resource :global(h3 a) { display: flex; align-items: center; min-height: 44px; color: var(--color-accent); }
+  .resource p { font-size: 13px; color: var(--color-muted); word-break: keep-all; }
+  .resource-tools { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
+  .resource-tools a { display: inline-flex; align-items: center; min-height: 44px; font-size: 12px; color: var(--color-accent); }
+  @media (max-width: 679px) { .resource-list { grid-template-columns: 1fr; gap: 22px; } }
+</style>

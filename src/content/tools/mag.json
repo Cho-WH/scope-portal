@@ -1,0 +1,37 @@
+{
+  "name": "자기장 측정기",
+  "summary": "자석 주변의 자기장 변화를 기록하기",
+  "description": "micro:bit의 자기장 센서를 연결해 변화를 관찰하고 측정 자료를 CSV로 저장합니다. 모의 데이터로 화면을 살펴볼 수도 있습니다.",
+  "topics": [
+    "electricity"
+  ],
+  "activity": "measurement",
+  "equipment": [
+    "micro:bit",
+    "Bluetooth"
+  ],
+  "environment": "Web Bluetooth 지원 브라우저",
+  "launchUrl": "https://cho-wh.github.io/MagnetometerBit/",
+  "sourceUrl": "https://github.com/Cho-WH/MagnetometerBit",
+  "keywords": [
+    "마이크로비트",
+    "microbit",
+    "자석",
+    "나침반",
+    "magnetometer"
+  ],
+  "capabilities": [
+    "자기장 변화 그래프",
+    "측정 자료 CSV 저장",
+    "모의 데이터로 화면 확인"
+  ],
+  "order": 50,
+  "draft": false,
+  "thumbnail": {
+    "src": "/images/tools/mag.jpg",
+    "alt": "장치 연결을 기다리는 자기장 측정기의 실행 화면",
+    "width": 1280,
+    "height": 800,
+    "fit": "cover"
+  }
+}

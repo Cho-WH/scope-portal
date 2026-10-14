@@ -1,0 +1,5 @@
+{
+  "title": "기체 실험 장치 안내", "description": "실험 앱의 장치 준비 단계에서 연결과 배치를 확인",
+  "kind": "setup-guide", "url": "https://cho-wh.github.io/bme280/gay-lussac/",
+  "toolIds": ["gas"], "order": 30, "draft": false, "showOnHome": true
+}

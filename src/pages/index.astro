@@ -1,0 +1,15 @@
+---
+import PortalLayout from '../layouts/PortalLayout.astro';
+import FeaturedBanner from '../features/featured/FeaturedBanner.astro';
+import ToolCatalog from '../features/catalog/ToolCatalog.astro';
+import ResourceList from '../components/resources/ResourceList.astro';
+import { loadCatalog } from '../lib/catalog/load';
+const { tools, resources, featured } = await loadCatalog();
+---
+<PortalLayout>
+  <h1 class="sr-only">sco.pe.kr 과학 실험·측정 도구</h1>
+  <FeaturedBanner tools={featured} />
+  <ToolCatalog tools={tools} />
+  <section class="home-resources" id="resources" aria-labelledby="resource-title"><div class="section-heading"><h2 id="resource-title">수업에 함께 쓰세요</h2><a class="text-link" href="/resources/">전체 자료</a></div><ResourceList resources={resources.filter(r => r.showOnHome)} /></section>
+</PortalLayout>
+<style>.home-resources { margin-top: var(--space-section); scroll-margin-top: 20px; }</style>

@@ -1,0 +1,57 @@
+{
+  "name": "회로봄",
+  "summary": "직접 만든 회로에서 전위와 전류 살피기",
+  "description": "회로를 연결하고 전압·전류를 측정합니다. 눈에 보이지 않는 전위를 색과 높이로 살펴보고, 활동지에 쓸 회로도를 출력할 수 있습니다.",
+  "topics": [
+    "electricity"
+  ],
+  "activity": "simulation",
+  "equipment": [
+    "별도 센서 없음"
+  ],
+  "environment": "컴퓨터·태블릿 권장",
+  "launchUrl": "https://cho-wh.github.io/circuit/",
+  "sourceUrl": "https://github.com/Cho-WH/circuit",
+  "keywords": [
+    "전압",
+    "저항",
+    "옴",
+    "전지",
+    "직렬",
+    "병렬",
+    "circuit"
+  ],
+  "capabilities": [
+    "회로 구성과 전압·전류 측정",
+    "전위를 색과 3D 높이로 관찰",
+    "활동지에 사용할 회로도 출력"
+  ],
+  "notes": [
+    "휴대폰에서는 조작이 제한될 수 있습니다. 회로도 출력 편집에는 넓은 화면을 권장합니다."
+  ],
+  "order": 10,
+  "draft": false,
+  "featured": {
+    "order": 10,
+    "shortLabel": "회로",
+    "headline": "전위를 높이로\n볼 수 있다면?",
+    "description": "저항을 바꾸면 전위는 어떻게 달라질까요?\n회로봄에서 직접 만든 회로를 살펴보세요."
+  },
+  "preview": {
+    "kind": "placeholder",
+    "poster": {
+      "src": "/images/previews/circuit.svg",
+      "alt": "직렬 회로의 전위 차이를 높이로 표현한 정적 예시 그림",
+      "width": 520,
+      "height": 230,
+      "fit": "contain"
+    }
+  },
+  "thumbnail": {
+    "src": "/images/tools/circuit.jpg",
+    "alt": "직렬 회로의 전압과 저항을 살펴보는 회로봄 실제 분석 화면",
+    "width": 1035,
+    "height": 580,
+    "fit": "contain"
+  }
+}

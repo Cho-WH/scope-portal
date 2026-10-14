@@ -1,0 +1,18 @@
+/* Dark-first graphite + periwinkle study. Components consume semantic color roles. */
+:root {
+  color-scheme: dark;
+  --color-paper: light-dark(#ffffff, #25272f);
+  --color-ink: light-dark(#18354b, #e7e9ef);
+  --color-muted: light-dark(#53677a, #acb1bf);
+  --color-accent: light-dark(#2d5bdc, #b2baf5);
+  --color-on-accent: light-dark(#ffffff, #222747);
+  --color-mist: light-dark(#f2f5fa, #30333d);
+  --color-line: light-dark(#dce3ec, #434855);
+  --color-teal: light-dark(#168588, #62c9c7);
+  --color-signal: light-dark(#d55a42, #f79d85);
+  --font-sans: 'IBM Plex Sans KR', 'Malgun Gothic', sans-serif;
+  --content-width: 1120px;
+  --radius-control: 6px;
+  --radius-panel: 10px;
+  --space-section: 36px;
+}

@@ -1,0 +1,35 @@
+---
+import type { Tool, Resource } from '../../lib/catalog/schema';
+import ExternalLink from '../../components/ui/ExternalLink.astro';
+import ToolFacts from '../../components/catalog/ToolFacts.astro';
+import ToolCard from '../../components/catalog/ToolCard.astro';
+import ResourceList from '../../components/resources/ResourceList.astro';
+interface Props { tool: Tool; resources: Resource[]; related: Tool[] }
+const { tool, resources, related } = Astro.props;
+---
+<nav class="breadcrumbs" aria-label="현재 위치"><a href="/#tools">실험·측정 도구</a><span aria-hidden="true">/</span><span>{tool.name}</span></nav>
+<header class="detail-heading"><h1>{tool.name}</h1><p>{tool.summary}</p><div class="detail-actions"><ExternalLink href={tool.launchUrl} label={`${tool.name} 실행`} class="button button-primary" />{tool.sourceUrl && <ExternalLink href={tool.sourceUrl} label="프로젝트 보기" class="text-link" />}</div></header>
+<div class="detail-grid">
+  <section aria-labelledby="about-title"><h2 id="about-title">이 도구로 할 수 있는 것</h2><p class="detail-description">{tool.description}</p>{tool.capabilities.length > 0 && <ul class="capabilities">{tool.capabilities.map(capability => <li>{capability}</li>)}</ul>}</section>
+  <section class="preparation" aria-labelledby="preparation-title"><h2 id="preparation-title">사용하기 전에</h2><ToolFacts tool={tool} />{tool.notes.length > 0 && <div class="detail-notes">{tool.notes.map(note => <p>{note}</p>)}</div>}</section>
+</div>
+{resources.length > 0 && <section class="detail-section" aria-labelledby="resource-title"><h2 id="resource-title">함께 쓰는 자료</h2><ResourceList resources={resources} /></section>}
+{related.length > 0 && <section class="detail-section" aria-labelledby="related-title"><div class="section-heading"><h2 id="related-title">같은 주제의 다른 도구</h2><a class="text-link" href="/#tools">전체 도구</a></div><div class="related-grid">{related.map(tool => <ToolCard tool={tool} />)}</div></section>}
+<style>
+  .breadcrumbs { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 18px; color: var(--color-muted); font-size: 13px; }
+  .breadcrumbs a { min-height: 44px; display: inline-flex; align-items: center; }
+  .detail-heading { margin: 24px 0 34px; }
+  .detail-heading>p { margin-top: 10px; font-size: 17px; color: var(--color-muted); word-break: keep-all; }
+  .detail-actions { display: flex; gap: 24px; flex-wrap: wrap; align-items: center; margin-top: 20px; }
+  .detail-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; border-top: 1px solid var(--color-line); padding-top: 30px; }
+  .detail-grid h2, .detail-section>h2 { font-size: 20px; margin-bottom: 18px; }
+  .detail-description { max-width: 40em; word-break: keep-all; }
+  .capabilities { margin: 18px 0 0; padding-left: 20px; }
+  .capabilities li { padding: 4px 0; }
+  .preparation { padding-left: 28px; border-left: 1px solid var(--color-line); }
+  .detail-notes { color: var(--color-muted); font-size: 13px; border-top: 1px solid var(--color-line); margin-top: 20px; padding-top: 16px; }
+  .detail-notes p+p { margin-top: 10px; }
+  .detail-section { margin-top: 42px; }
+  .related-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 32px; }
+  @media (max-width: 679px) { .detail-grid { grid-template-columns: 1fr; gap: 26px; } .preparation { padding-left: 0; border-left: 0; } .detail-heading { margin-top: 16px; } .detail-heading>p { font-size: 15px; } .related-grid { grid-template-columns: 1fr; } }
+</style>

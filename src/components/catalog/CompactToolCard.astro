@@ -1,0 +1,7 @@
+---
+import type { Tool } from '../../lib/catalog/schema';
+import ToolCard from './ToolCard.astro';
+interface Props { tool: Tool }
+const { tool } = Astro.props;
+---
+<ToolCard tool={tool} variant="compact" />

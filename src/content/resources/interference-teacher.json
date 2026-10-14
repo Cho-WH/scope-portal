@@ -1,0 +1,5 @@
+{
+  "title": "간섭 수업 진행 화면", "description": "관측점을 옮기며 경로차를 함께 비교하는 교사 모드",
+  "kind": "teacher-guide", "url": "https://cho-wh.github.io/interference/?mode=teacher",
+  "toolIds": ["waves"], "order": 10, "draft": false, "showOnHome": true
+}
