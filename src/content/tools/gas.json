@@ -1,5 +1,5 @@
 {
-  "name": "기체의 온도와 압력",
+  "name": "게이뤼삭 실험",
   "summary": "공기를 데우며 온도와 압력의 관계 찾기",
   "description": "장치 준비, 온도·압력 측정, 자료 분석을 한 흐름으로 이어 갑니다. 근거 그래프와 탐구 기록을 출력할 수 있습니다.",
   "topics": [
@@ -35,7 +35,7 @@
   "draft": false,
   "featured": {
     "order": 30,
-    "shortLabel": "기체",
+    "shortLabel": "게이뤼삭",
     "headline": "공기를 데우면\n압력은 어떻게 될까요?",
     "description": "온도와 압력의 변화를 함께 기록해 보세요.\n그래프에서 두 값의 관계를 찾아볼 수 있어요."
   },
@@ -54,7 +54,7 @@
   },
   "thumbnail": {
     "src": "/images/tools/gas.jpg",
-    "alt": "기체 실험 앱에서 보여주는 밀폐 용기와 센서 장치 그림",
+    "alt": "게이뤼삭 실험 앱에서 보여주는 밀폐 용기와 센서 장치 그림",
     "width": 545,
     "height": 370,
     "fit": "contain"
