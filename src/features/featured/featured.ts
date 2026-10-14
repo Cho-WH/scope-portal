@@ -21,17 +21,15 @@ document.querySelectorAll<HTMLElement>('[data-featured]').forEach(root => {
   new ResizeObserver(positionIndicator).observe(tablist);
   document.fonts.ready.then(positionIndicator);
 
+  let previewManager: { sync(): void } | undefined;
+  let loadingPreview: Promise<void> | undefined;
   function syncPreview() {
-    for (const panel of panels) {
-      const host = panel.querySelector<HTMLElement>('[data-preview-host]');
-      if (!host) continue;
-      const rendered = host.querySelector('figure');
-      if (!desktop.matches || panel.hidden) rendered?.remove();
-      else if (!rendered) {
-        const template = host.querySelector<HTMLTemplateElement>('template');
-        if (template) host.append(template.content.cloneNode(true));
-      }
-    }
+    if (previewManager) { previewManager.sync(); return; }
+    if (!desktop.matches) return;
+    loadingPreview ??= import('../preview/controller').then(({createPreviewManager}) => {
+      previewManager = createPreviewManager(root);
+      previewManager.sync();
+    }).catch(() => { loadingPreview = undefined; });
   }
   function select(tab: HTMLButtonElement, focus = false, syncUrl = true) {
     for (const item of tabs) {

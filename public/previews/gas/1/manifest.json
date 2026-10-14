@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "scene": "gas",
+  "revision": "1",
+  "durationMs": 6500,
+  "viewBox": [
+    1200,
+    480
+  ],
+  "data": "/previews/gas/1/scene.json",
+  "files": [
+    {
+      "src": "/previews/gas/1/scene.json",
+      "sha256": "a65e7dd7342317cb2ae46d4d48e2cf8e2107a8d10b058d2a050099690e3b6f13",
+      "bytes": 1661
+    },
+    {
+      "src": "/previews/gas/1/equipment.svg",
+      "sha256": "b6a91cf70ebd9c029d604c5497962a7a8091eab35f7e99a58e0a21cbd370e4dc",
+      "bytes": 3955
+    }
+  ],
+  "source": {
+    "url": "https://github.com/Cho-WH/bme280.git",
+    "commit": "8c8e2c5466635c935206a1e520a42cedc449216c"
+  },
+  "generator": "preview-bake/1",
+  "inputHash": "fe58a3d705172c107b4bf21a018c8798f492ddc15aeccc862cefb4b1f7ded5bd",
+  "poster": {
+    "src": "/images/previews/gas-final.svg",
+    "sha256": "aa1839042ad6e03150ecf25762bed9e78a6be25ab0d82e930231490c373a7916"
+  }
+}

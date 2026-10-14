@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "scene": "circuit",
+  "revision": "1",
+  "durationMs": 6500,
+  "viewBox": [
+    1200,
+    480
+  ],
+  "data": "/previews/circuit/1/scene.json",
+  "files": [
+    {
+      "src": "/previews/circuit/1/scene.json",
+      "sha256": "6b34211d0bf75cd70ae6fe671c5924605d0ae3889a025d3c2b59f036ae314489",
+      "bytes": 51964
+    }
+  ],
+  "source": {
+    "url": "https://github.com/Cho-WH/circuit.git",
+    "commit": "8d5b3aa73ab18b3dc49fcaadada23f9ee404d11d"
+  },
+  "generator": "preview-bake/1",
+  "inputHash": "b25ad79108ead0263b91a8e9abf03477f2ab35b7390cd0cdc8b05d659aa1f6fe",
+  "poster": {
+    "src": "/images/previews/circuit-final.svg",
+    "sha256": "59b0b3ff61cc98760224199bd32ed0a633d7d28c5275cd0fe3a53b418fb533f3"
+  }
+}

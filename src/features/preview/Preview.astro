@@ -1,0 +1,25 @@
+---
+import type { Tool } from '../../lib/catalog/schema';
+import PreviewPlaceholder from '../featured/PreviewPlaceholder.astro';
+interface Props { tool: Tool }
+const {tool}=Astro.props;
+const preview=tool.preview;
+---
+{preview?.kind === 'baked-scene' ? <template data-preview-template>
+  <figure class="scene-preview" data-preview="baked-scene" data-scene={preview.scene} data-manifest={preview.manifest} aria-label={preview.poster.alt}>
+    <div class="scene-visual">
+      <img data-scene-poster src={preview.poster.src} alt="" width={preview.poster.width} height={preview.poster.height} />
+      <div class="scene-surface" data-scene-surface></div>
+    </div>
+    <button class="scene-control" type="button" data-preview-control hidden>재생</button>
+    <span class="sr-only" data-preview-status role="status"></span>
+    <figcaption class="sr-only">{preview.poster.alt} 정지와 다시 보기 버튼으로 재생을 조절할 수 있습니다.</figcaption>
+  </figure>
+</template> : <PreviewPlaceholder tool={tool} />}
+<style>
+  .scene-preview { position: relative; width: 100%; height: 100%; }
+  .scene-visual { position: absolute; inset: 0; mask-image: linear-gradient(to right, transparent, rgb(0 0 0 / .15) 12%, #000 28%, #000 96%, transparent); }
+  .scene-surface, [data-scene-poster] { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+  .scene-control { position: absolute; right: 5%; bottom: -2px; z-index: 2; min-height: 44px; padding: 8px 10px; font-size: 11px; color: var(--color-muted); background: transparent; pointer-events: auto; }
+  .scene-control:hover { color: var(--color-accent); }
+</style>

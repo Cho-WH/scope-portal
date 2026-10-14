@@ -40,14 +40,16 @@
     "description": "온도와 압력의 변화를 함께 기록해 보세요.\n그래프에서 두 값의 관계를 찾아볼 수 있어요."
   },
   "preview": {
-    "kind": "placeholder",
+    "kind": "baked-scene",
+    "scene": "gas",
+    "revision": "1",
+    "manifest": "/previews/gas/1/manifest.json",
     "poster": {
-      "src": "/images/previews/gas.svg",
-      "alt": "밀폐 용기 속 공기와 압력 센서, 마이크로비트 연결을 표현한 정적 개념 그림",
-      "width": 520,
-      "height": 230,
-      "fit": "contain",
-      "focalPoint": { "x": 75, "y": 50 }
+      "src": "/images/previews/gas-final.svg",
+      "alt": "예시 데이터를 이용해 장비 옆 온도·압력 산점도가 나타나고 추세선이 그려지는 장면",
+      "width": 1200,
+      "height": 480,
+      "fit": "contain"
     }
   },
   "thumbnail": {

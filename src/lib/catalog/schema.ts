@@ -36,9 +36,11 @@ export const toolSchema = z.object({
     headline: text.max(70),
     description: text.max(160),
   }).optional(),
-  // A static poster is the entire preview contract for this prototype.
-  // Interactive previews can later add a discriminated union without changing cards/pages.
-  preview: z.object({ kind: z.literal('placeholder'), poster: poster.optional() }).optional(),
+  preview: z.discriminatedUnion('kind', [
+    z.object({ kind: z.literal('placeholder'), poster: poster.optional() }),
+    z.object({ kind: z.literal('baked-scene'), scene: z.enum(['circuit', 'waves', 'gas']),
+      revision: z.string().regex(/^\d+$/), manifest: z.string().regex(/^\/previews\/(circuit|waves|gas)\/\d+\/manifest\.json$/), poster }),
+  ]).optional(),
 }).strict();
 
 export const resourceSchema = z.object({

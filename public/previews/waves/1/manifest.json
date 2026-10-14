@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "scene": "waves",
+  "revision": "1",
+  "durationMs": 5500,
+  "viewBox": [
+    1200,
+    480
+  ],
+  "data": "/previews/waves/1/scene.json",
+  "files": [
+    {
+      "src": "/previews/waves/1/scene.json",
+      "sha256": "3760752cabf26040d1196ed39d37b6fdf1478c320f5945875d2fc4193564acab",
+      "bytes": 3620
+    },
+    {
+      "src": "/previews/waves/1/field.rgb",
+      "sha256": "ff025ee98140cd0107a3a59ab805f66b438d145265d41451b18e81481b769ea0",
+      "bytes": 236160
+    }
+  ],
+  "source": {
+    "url": "https://github.com/Cho-WH/interference.git",
+    "commit": "58cc7833eb2374f07db89e614a461316bd58c434"
+  },
+  "generator": "preview-bake/1",
+  "inputHash": "63bff40b51c7bd24370174ba40d79e3769324a809c10280d21fa0de164dc0d4d",
+  "poster": {
+    "src": "/images/previews/waves-final.svg",
+    "sha256": "103e5e30a0aa40d22f9c3f0469da5429fe3dd9c13936e6fc63c3ab51a7de5a51"
+  }
+}

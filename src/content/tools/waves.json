@@ -37,13 +37,16 @@
     "description": "관측점을 옮겨 두 파동의 경로를 비교해 보세요.\n보강과 상쇄가 일어나는 곳을 찾을 수 있어요."
   },
   "preview": {
-    "kind": "placeholder",
+    "kind": "baked-scene",
+    "scene": "waves",
+    "revision": "1",
+    "manifest": "/previews/waves/1/manifest.json",
     "poster": {
-      "src": "/images/tools/waves.jpg",
-      "alt": "두 파원에서 퍼져 나가는 파동의 간섭무늬와 관측점",
-      "width": 920,
-      "height": 391,
-      "focalPoint": { "x": 60, "y": 50 }
+      "src": "/images/previews/waves-final.svg",
+      "alt": "정상 상태의 두 경로를 펼쳐 경로차 7.5 cm가 반 파장임을 비교하는 장면. 오른쪽 상쇄 간섭 조건은 델타 l = (2n + 1)을 2로 나눈 값 곱하기 람다이며 n은 0 이상의 정수입니다.",
+      "width": 1200,
+      "height": 480,
+      "fit": "contain"
     }
   },
   "thumbnail": {

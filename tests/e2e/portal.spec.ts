@@ -59,7 +59,7 @@ test('검색 주소 공유, 상세 소개, 뒤로 가기', async ({ page }) => {
   expect(await page.locator('[data-tool-id]:visible').evaluateAll(items => items.map(item => (item as HTMLElement).dataset.toolId))).toEqual(ids);
 });
 
-test('대표 도구는 수동 탭으로 전환되며 미리보기는 정적 더미다', async ({ page }) => {
+test('대표 도구는 수동 탭으로 전환되며 선택한 장면만 생성된다', async ({ page }) => {
   await page.goto('/');
   await expect(page.locator('[data-featured]')).toHaveAttribute('data-ready', 'true');
   const first = page.locator('#feature-tab-circuit');
@@ -72,10 +72,15 @@ test('대표 도구는 수동 탭으로 전환되며 미리보기는 정적 더�
   await expect(page.locator('#feature-panel-waves')).toBeVisible();
   await expect.poll(async () => (await indicator.boundingBox())!.x).toBeGreaterThan(start!.x);
   await expect(page.locator('figure[data-preview]')).toHaveCount(1);
-  await expect(page.locator('input[type="range"], canvas, iframe')).toHaveCount(0);
+  await expect(page.locator('figure[data-scene="waves"]')).toHaveAttribute('data-playback', 'playing');
+  await expect(page.locator('canvas')).toHaveCount(1);
+  await expect(page.locator('input[type="range"], iframe, video')).toHaveCount(0);
   await page.keyboard.press('End');
   await expect(page.locator('#feature-tab-gas')).toBeFocused();
-  await expect(page.locator('#feature-panel-gas').getByText('조작 기능 준비 중')).toBeVisible();
+  await expect(page.locator('figure[data-scene="gas"]')).toHaveAttribute('data-playback', 'playing');
+  await expect(page.locator('figure[data-preview]')).toHaveCount(1);
+  await expect(page.locator('canvas')).toHaveCount(0);
+  await expect(page.locator('#feature-panel-gas svg').getByText('예시 데이터', { exact: true })).toHaveCount(0);
 });
 
 test('첫 줄은 3열 이미지형, 다음 줄은 2열 오른쪽 이미지형이며 검색 후 복원된다', async ({ page }) => {
@@ -109,7 +114,7 @@ test('모바일에서는 미리보기를 생성하거나 이미지를 요청하�
   const context = await browser.newContext({ viewport: { width: 360, height: 800 }, isMobile: true, hasTouch: true });
   const page = await context.newPage();
   const posters: string[] = [];
-  page.on('request', request => { if (request.url().includes('/images/previews/')) posters.push(request.url()); });
+  page.on('request', request => { if (/\/(images\/)?previews\//.test(request.url())) posters.push(request.url()); });
   await page.goto('http://127.0.0.1:4322/');
   await expect(page.locator('[data-featured]')).toHaveAttribute('data-ready', 'true');
   await expect(page.locator('figure[data-preview]')).toHaveCount(0);

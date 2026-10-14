@@ -3,6 +3,7 @@ import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { toolSchema, resourceSchema, contentId } from '../src/lib/catalog/schema.ts';
 import { catalogErrors } from '../src/lib/catalog/validation.ts';
+import { validatePreview } from './preview-validation.ts';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 async function files(folder: string) {
@@ -16,6 +17,8 @@ const tools = (await files('tools')).map(({ id, raw }) => ({ ...toolSchema.parse
 const resources = (await files('resources')).map(({ id, raw }) => ({ ...resourceSchema.parse(raw), id }));
 const errors = catalogErrors(tools, resources);
 for (const tool of tools) {
+  try { await validatePreview(root, tool); }
+  catch (error) { errors.push(`${tool.id}: ${error instanceof Error ? error.message : '장면 검증 실패'}`); }
   for (const poster of [tool.preview?.poster, tool.thumbnail]) {
     if (!poster) continue;
     try { await access(resolve(root, 'public', poster.src.slice(1))); }

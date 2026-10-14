@@ -38,12 +38,15 @@
     "description": "저항을 바꾸면 전위는 어떻게 달라질까요?\n회로봄에서 직접 만든 회로를 살펴보세요."
   },
   "preview": {
-    "kind": "placeholder",
+    "kind": "baked-scene",
+    "scene": "circuit",
+    "revision": "1",
+    "manifest": "/previews/circuit/1/manifest.json",
     "poster": {
-      "src": "/images/previews/circuit.svg",
-      "alt": "직렬 회로의 전위 차이를 높이로 표현한 정적 예시 그림",
-      "width": 520,
-      "height": 230,
+      "src": "/images/previews/circuit-final.svg",
+      "alt": "직병렬 회로가 전위 높이와 색을 갖는 입체 표현으로 바뀌며, 전체 3 A가 2 A와 1 A로 나뉘는 장면",
+      "width": 1200,
+      "height": 480,
       "fit": "contain"
     }
   },

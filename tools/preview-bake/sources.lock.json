@@ -1,0 +1,5 @@
+{
+  "circuit": { "url": "https://github.com/Cho-WH/circuit.git", "commit": "8d5b3aa73ab18b3dc49fcaadada23f9ee404d11d" },
+  "interference": { "url": "https://github.com/Cho-WH/interference.git", "commit": "58cc7833eb2374f07db89e614a461316bd58c434" },
+  "bme280": { "url": "https://github.com/Cho-WH/bme280.git", "commit": "8c8e2c5466635c935206a1e520a42cedc449216c" }
+}
