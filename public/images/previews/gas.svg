@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="230" viewBox="0 0 520 230" role="img" aria-labelledby="title desc">
+  <title id="title">밀폐 용기 속 공기와 압력 센서</title>
+  <desc id="desc">기체 실험을 소개하는 정적 개념 그림. 밀폐 용기의 센서가 마이크로비트와 연결되어 있습니다. 실제 측정값은 표시하지 않습니다.</desc>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M195 44v16c0 10-20 14-20 30v103q0 12 12 12h125q12 0 12-12V90c0-16-20-20-20-30V44" fill="#30333d" stroke="#8993ba" stroke-width="2"/>
+    <rect x="188" y="32" width="124" height="12" rx="4" fill="#434855" stroke="#b2baf5" stroke-width="2"/>
+    <path d="M189 92v96q0 5 5 5" stroke="#596179"/>
+    <path d="M282 79c31-23 60 4 60 29v25c0 24 30 22 44 22" stroke="#d9a36d" stroke-width="2"/>
+    <path d="M287 85c25-18 47 4 47 25v28c0 28 34 27 52 27" stroke="#b2baf5" stroke-width="2"/>
+    <path d="M250 44V72" stroke="#8993ba" stroke-width="2"/>
+    <rect x="235" y="73" width="53" height="29" rx="4" fill="#434855" stroke="#b2baf5"/>
+    <rect x="253" y="80" width="17" height="14" rx="2" fill="#b2baf5" stroke="none"/>
+    <rect x="386" y="128" width="91" height="60" rx="6" fill="#30333d" stroke="#8993ba" stroke-width="1.5"/>
+    <circle cx="400" cy="151" r="4" stroke="#acb1bf"/><circle cx="462" cy="151" r="4" stroke="#acb1bf"/>
+    <path d="M402 182v6m14-6v6m14-6v6m14-6v6m14-6v6" stroke="#d9a36d" stroke-width="4"/>
+    <path d="M214 122h18m41 24h17m-73 32h19" stroke="#687393"/>
+    <path d="m228 119 4 3-4 3m58 18 4 3-4 3m-54 29 4 3-4 3" stroke="#687393"/>
+  </g>
+  <g fill="#b2baf5"><circle cx="210" cy="122" r="3"/><circle cx="269" cy="146" r="3"/><circle cx="213" cy="178" r="3"/><circle cx="288" cy="181" r="2"/><circle cx="246" cy="156" r="2"/><circle cx="291" cy="119" r="2"/></g>
+  <g font-family="sans-serif" font-size="12" fill="#acb1bf">
+    <text x="250" y="20" text-anchor="middle">밀폐 용기</text>
+    <text x="223" y="88" text-anchor="end">압력 센서</text>
+    <text x="431" y="211" text-anchor="middle">micro:bit</text>
+  </g>
+</svg>

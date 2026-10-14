@@ -23,8 +23,11 @@ const { tools } = Astro.props;
 </section>}
 <script>import './featured.ts';</script>
 <style>
-  .featured-banner { margin: 20px 0 22px; }
+  .featured-banner { position: relative; isolation: isolate; margin: 20px 0 22px; }
   .feature-panel { display: grid; grid-template-columns: 1.05fr .95fr; gap: 42px; align-items: center; min-height: 230px; padding: 4px 0 12px; }
+  .feature-copy { position: relative; z-index: 1; }
+  /* Fill the entire banner, including its tab row; the image mask softens its edges. */
+  .feature-preview { position: absolute; inset: 0 0 0 auto; width: 62%; pointer-events: none; }
   .feature-copy h2 { font-size: 34px; font-weight: 600; line-height: 1.28; letter-spacing: -1.2px; white-space: pre-line; }
   .feature-description { max-width: 35em; margin-top: 12px; color: var(--color-muted); font-size: 14px; word-break: keep-all; white-space: pre-line; }
   .feature-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 22px; margin-top: 15px; }

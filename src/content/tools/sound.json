@@ -31,6 +31,10 @@
     "alt": "소리 발생기의 좌우 채널 주파수·볼륨·위상 설정 화면",
     "width": 982,
     "height": 376,
-    "fit": "contain"
+    "fit": "contain",
+    "focalPoint": {
+      "x": 80,
+      "y": 50
+    }
   }
 }

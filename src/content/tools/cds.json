@@ -35,6 +35,10 @@
     "alt": "CdS 학습 페이지의 마이크로비트와 브레드보드 배선 회로도",
     "width": 818,
     "height": 384,
-    "fit": "contain"
+    "fit": "contain",
+    "focalPoint": {
+      "x": 20,
+      "y": 50
+    }
   }
 }

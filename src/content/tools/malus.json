@@ -35,6 +35,10 @@
     "alt": "장치 연결 전 편광 실험의 측정 제어와 피팅 화면",
     "width": 1280,
     "height": 800,
-    "fit": "cover"
+    "fit": "cover",
+    "focalPoint": {
+      "x": 70,
+      "y": 40
+    }
   }
 }

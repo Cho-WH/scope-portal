@@ -32,6 +32,10 @@
     "alt": "장치 연결을 기다리는 자기장 측정기의 실행 화면",
     "width": 1280,
     "height": 800,
-    "fit": "cover"
+    "fit": "cover",
+    "focalPoint": {
+      "x": 70,
+      "y": 40
+    }
   }
 }

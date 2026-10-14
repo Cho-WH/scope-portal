@@ -42,10 +42,12 @@
   "preview": {
     "kind": "placeholder",
     "poster": {
-      "src": "/images/previews/gas.jpg",
-      "alt": "기체의 온도와 압력 앱의 장치 준비 안내 정적 화면",
-      "width": 1100,
-      "height": 680
+      "src": "/images/previews/gas.svg",
+      "alt": "밀폐 용기 속 공기와 압력 센서, 마이크로비트 연결을 표현한 정적 개념 그림",
+      "width": 520,
+      "height": 230,
+      "fit": "contain",
+      "focalPoint": { "x": 75, "y": 50 }
     }
   },
   "thumbnail": {

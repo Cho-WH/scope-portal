@@ -8,8 +8,8 @@ interface Props { tool: Tool; variant?: 'featured' | 'compact' }
 const { tool, variant = 'compact' } = Astro.props;
 const search = toSearchItem(tool);
 ---
-<article class="tool-card" data-card-variant={variant} data-tool-id={tool.id} data-search={search.text} data-topics={tool.topics.join(' ')} data-activity={tool.activity} aria-labelledby={`tool-title-${tool.id}`}>
-  <div class="tool-thumbnail"><ToolImage tool={tool} /></div>
+<article class="tool-card" data-card-variant={variant} data-has-image={Boolean(tool.thumbnail)} data-tool-id={tool.id} data-search={search.text} data-topics={tool.topics.join(' ')} data-activity={tool.activity} aria-labelledby={`tool-title-${tool.id}`}>
+  <div class="tool-thumbnail"><ToolImage tool={tool} presentation="background" /></div>
   <div class="tool-copy">
   <div class="tool-heading"><h3 id={`tool-title-${tool.id}`}><a href={`/tools/${tool.id}/`}>{tool.name}</a></h3><span class="tool-activity">{activityLabel(tool.activity)}</span></div>
   <p class="tool-summary">{tool.summary}</p>
@@ -18,17 +18,26 @@ const search = toSearchItem(tool);
   <div class="tool-actions"><ExternalLink href={tool.launchUrl} label="실행" accessibleLabel={`${tool.name} 실행`} class="button" /><a class="text-link" href={`/tools/${tool.id}/`} aria-label={`${tool.name} 도구 소개`}>도구 소개</a></div>
 </article>
 <style>
-  .tool-card { grid-column: span 3; display: grid; grid-template-columns: minmax(0, 1fr) 34%; grid-template-rows: 1fr auto; column-gap: 18px; padding: 23px 0; border-bottom: 1px solid var(--color-line); min-width: 0; }
-  .tool-copy { grid-column: 1; grid-row: 1; min-width: 0; }
-  .tool-thumbnail { grid-column: 2; grid-row: 1 / 3; align-self: center; aspect-ratio: 1.55; min-width: 0; }
+  .tool-card { position: relative; isolation: isolate; grid-column: span 3; display: grid; grid-template-columns: minmax(0, 1fr) 34%; grid-template-rows: 1fr auto; column-gap: 18px; padding: 23px 0; border-bottom: 1px solid var(--color-line); min-width: 0; }
+  .tool-copy { position: relative; z-index: 1; grid-column: 1; grid-row: 1; min-width: 0; }
+  .tool-thumbnail { grid-column: 2; grid-row: 1 / 3; align-self: center; aspect-ratio: 1.55; min-width: 0; pointer-events: none; }
+  [data-has-image='true'][data-card-variant='compact'] .tool-thumbnail {
+    position: absolute; inset: 8px 0 8px auto; width: 60%; aspect-ratio: auto;
+    grid-column: auto; grid-row: auto; align-self: auto; --tool-image-opacity: .96;
+    mask-image: linear-gradient(to right, transparent 0%, rgb(0 0 0 / .03) 12%, rgb(0 0 0 / .14) 25%, rgb(0 0 0 / .36) 38%, rgb(0 0 0 / .65) 51%, rgb(0 0 0 / .88) 64%, #000 78%);
+  }
   .tool-heading { display: flex; align-items: baseline; flex-wrap: wrap; gap: 5px 12px; }
   .tool-activity { color: var(--color-muted); font-size: 12px; }
   .tool-summary { font-size: 14px; margin-top: 6px; word-break: keep-all; }
   .tool-equipment { margin-top: 8px; font-size: 12px; color: var(--color-muted); }
-  .tool-actions { grid-column: 1; grid-row: 2; display: flex; gap: 20px; align-items: center; margin-top: 11px; }
+  .tool-actions { position: relative; z-index: 1; grid-column: 1; grid-row: 2; display: flex; gap: 20px; align-items: center; margin-top: 11px; }
   .tool-actions .text-link { font-size: 13px; }
   .tool-card[data-card-variant='featured'] { grid-column: span 2; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 1fr auto; padding-top: 9px; }
   [data-card-variant='featured'] .tool-thumbnail { grid-column: 1; grid-row: 1; aspect-ratio: 1.95; margin-bottom: 15px; }
+  [data-has-image='true'][data-card-variant='featured'] .tool-thumbnail {
+    --tool-image-opacity: .98; margin-bottom: -9px;
+    mask-image: linear-gradient(to bottom, #000 0%, #000 70%, rgb(0 0 0 / .85) 82%, transparent 100%);
+  }
   [data-card-variant='featured'] .tool-copy { grid-row: 2; }
   [data-card-variant='featured'] .tool-heading { flex-direction: column-reverse; gap: 3px; }
   [data-card-variant='featured'] .tool-summary { min-height: 46px; }
@@ -41,6 +50,13 @@ const search = toSearchItem(tool);
   @media (max-width: 679px) {
     .tool-card, .tool-card[data-card-variant='featured'] { grid-template-columns: minmax(0, 1fr) 28%; grid-template-rows: 1fr auto; column-gap: 14px; padding: 18px 0; }
     .tool-thumbnail, [data-card-variant='featured'] .tool-thumbnail { grid-column: 2; grid-row: 1; aspect-ratio: 1.15; margin: 0; }
+    [data-has-image='true'] .tool-thumbnail,
+    [data-has-image='true'][data-card-variant='featured'] .tool-thumbnail,
+    [data-has-image='true'][data-card-variant='compact'] .tool-thumbnail {
+      position: absolute; inset: 8px 0 8px auto; width: 54%; aspect-ratio: auto; margin: 0;
+      grid-column: auto; grid-row: auto; align-self: auto; --tool-image-opacity: .94;
+      mask-image: linear-gradient(to right, transparent 0%, rgb(0 0 0 / .03) 16%, rgb(0 0 0 / .14) 30%, rgb(0 0 0 / .36) 44%, rgb(0 0 0 / .65) 58%, rgb(0 0 0 / .88) 72%, #000 86%);
+    }
     .tool-copy, [data-card-variant='featured'] .tool-copy { grid-column: 1; grid-row: 1; }
     [data-card-variant='featured'] .tool-heading { flex-direction: row; gap: 5px 12px; }
     .tool-actions, [data-card-variant='featured'] .tool-actions { grid-column: 1 / -1; grid-row: 2; justify-content: flex-start; gap: 24px; }

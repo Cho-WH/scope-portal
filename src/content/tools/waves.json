@@ -39,10 +39,11 @@
   "preview": {
     "kind": "placeholder",
     "poster": {
-      "src": "/images/previews/waves.jpg",
-      "alt": "두 파원과 관측점을 비교하는 파동의 간섭 앱의 정적 화면",
-      "width": 1100,
-      "height": 680
+      "src": "/images/tools/waves.jpg",
+      "alt": "두 파원에서 퍼져 나가는 파동의 간섭무늬와 관측점",
+      "width": 920,
+      "height": 391,
+      "focalPoint": { "x": 60, "y": 50 }
     }
   },
   "thumbnail": {
