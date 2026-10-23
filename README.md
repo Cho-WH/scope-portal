@@ -72,4 +72,4 @@ npm run test:e2e
 
 `backups/edulink-2026-10-14/`에 이전 파일과 로컬 지침·스킬을 보관했습니다. `backup-manifest.json`에는 원본과 대조한 SHA-256 해시가 있습니다. Git 이력은 현재 `.git`에 그대로 유지됩니다. 백업은 `public/`이나 `dist/`에 포함되지 않습니다.
 
-GitHub 푸시와 도메인 배포는 수행하지 않았습니다. 배포할 경우 현재 빌드 결과는 정적 호스팅에 사용할 수 있으며, 기존 실험 앱은 원래 공개 주소로 실행됩니다.
+GitHub 저장소는 `Cho-WH/scope-portal`입니다. Cloudflare Workers Static Assets 배포 설정을 추가했으며, 실제 배포·도메인 연결 완료는 별도로 확인해야 합니다. 빌드 명령은 `npm run build`, 배포 명령은 `npx wrangler deploy`, 미리보기 명령은 `npx wrangler preview`입니다. `wrangler.jsonc`는 `dist/`만 배포하고 `.node-version`은 Node 24를 지정합니다. 기존 실험 앱은 원래 공개 주소로 실행됩니다.

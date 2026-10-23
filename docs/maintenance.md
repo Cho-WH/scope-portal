@@ -153,6 +153,6 @@ npm run test:e2e
 
 ## 빌드와 배포 경계
 
-`npm run build` 결과는 `dist/`다. 배포 입력에는 이 폴더만 사용한다. `backups/`, `.agents/`, `docs/`, 테스트 결과를 배포하지 않는다. 현재 호스팅 연결과 배포 자동화는 설정하지 않았다.
+`npm run build` 결과는 `dist/`다. `wrangler.jsonc`는 Cloudflare Workers Static Assets에 이 폴더만 배포한다. `backups/`, `.agents/`, `docs/`, 테스트 결과를 배포하지 않는다. `.node-version`은 Node 24를 지정한다. 대시보드 프로젝트 이름은 `scope-portal`, 빌드 명령은 `npm run build`, 배포 명령은 `npx wrangler deploy`, 미리보기 명령은 `npx wrangler preview`를 사용한다. 저장소 루트에서 실행하며, 실제 배포 성공과 사용자 지정 도메인 활성화는 대시보드에서 별도로 확인한다.
 
 실험 앱 주소를 옮기기 전에는 기존 공유 링크, 브라우저 저장 데이터와 기기 권한을 별도로 확인한다. 포털에 새 링크를 등록하는 것만으로 해당 데이터가 옮겨지지는 않는다.
