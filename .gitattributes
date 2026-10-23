@@ -1,0 +1,5 @@
+# Hashed text assets must retain identical bytes on Windows and Linux.
+/public/previews/**/*.json text eol=lf
+/public/previews/**/*.svg text eol=lf
+/public/previews/**/*.rgb binary
+/public/images/previews/*-final.svg text eol=lf

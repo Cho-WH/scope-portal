@@ -16,8 +16,8 @@
     },
     {
       "src": "/previews/gas/1/equipment.svg",
-      "sha256": "b6a91cf70ebd9c029d604c5497962a7a8091eab35f7e99a58e0a21cbd370e4dc",
-      "bytes": 3955
+      "sha256": "ac7487a7c05c82e3b77c20fec48b3948c2e558fff5202606bac43fde0d80771b",
+      "bytes": 3916
     }
   ],
   "source": {
@@ -28,6 +28,6 @@
   "inputHash": "fe58a3d705172c107b4bf21a018c8798f492ddc15aeccc862cefb4b1f7ded5bd",
   "poster": {
     "src": "/images/previews/gas-final.svg",
-    "sha256": "aa1839042ad6e03150ecf25762bed9e78a6be25ab0d82e930231490c373a7916"
+    "sha256": "e907286641fb1c7cf20272be5115de2c7db91d23d72ac3595cb37dfc57a6c07f"
   }
 }

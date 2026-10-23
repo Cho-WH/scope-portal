@@ -444,13 +444,16 @@ export async function bakeAll(root: string, sources: any) {
     waves: wavesScene,
     gas: gasScene,
   })) {
-    const { data, poster, files } = make();
+    const { data, poster: rawPoster, files } = make();
+    // Normalize source checkout line endings before both writing and hashing.
+    const poster = rawPoster.replace(/\r\n?/g, '\n');
     const folder = resolve(root, `public/previews/${id}/1`);
     await mkdir(folder, { recursive: true });
     const encoded = JSON.stringify(data);
     const assets = { 'scene.json': encoded, ...files };
     const entries = [];
-    for (const [name, value] of Object.entries(assets)) {
+    for (const [name, rawValue] of Object.entries(assets)) {
+      const value = typeof rawValue === 'string' ? rawValue.replace(/\r\n?/g, '\n') : rawValue;
       await writeFile(resolve(folder, name), value as any);
       entries.push({
         src: `/previews/${id}/1/${name}`,
