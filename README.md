@@ -1,6 +1,15 @@
 # sco.pe.kr 과학 포털
 
-과학 실험·측정 도구와 수업 자료를 모으는 **로컬 프로토타입**입니다. Astro로 정적 페이지를 만들고, 검색·필터·대표 도구 선택과 계산 결과를 저장한 미리보기에 작은 TypeScript 모듈을 사용합니다.
+과학 실험·측정 도구와 수업 자료를 모으는 **과학 탐구 포털**입니다. Astro로 정적 페이지를 만들고, 검색·필터·대표 도구 선택과 계산 결과를 저장한 미리보기에 작은 TypeScript 모듈을 사용합니다.
+
+## 현재 운영 상태
+
+2026-10-23 기준, Cloudflare Workers Static Assets로 배포하여 **[sco.pe.kr](https://sco.pe.kr)**에서 공개 중입니다. HTTPS 응답 `200 OK`와 페이지 제목·대표 도구 콘텐츠를 확인했습니다. 기능과 콘텐츠는 계속 개선 중이며, 개별 실험 앱은 기존 공개 주소에서 독립적으로 운영합니다.
+
+- 저장소: [Cho-WH/scope-portal](https://github.com/Cho-WH/scope-portal), 로컬 폴더는 기존 `edulink` 이름을 유지합니다.
+- 배포 프로젝트: `scope-portal`. GitHub 연결을 통해 빌드하고 `dist/`를 배포합니다.
+- 도메인 등록·갱신: 호스팅케이알. DNS·HTTPS·포털 제공: Cloudflare.
+- 배포 설정, 확인 범위, 장애 해결 기록과 후속 작업: [배포·운영 현황](docs/deployment.md).
 
 ## 시작
 
@@ -72,4 +81,4 @@ npm run test:e2e
 
 `backups/edulink-2026-10-14/`에 이전 파일과 로컬 지침·스킬을 보관했습니다. `backup-manifest.json`에는 원본과 대조한 SHA-256 해시가 있습니다. Git 이력은 현재 `.git`에 그대로 유지됩니다. 백업은 `public/`이나 `dist/`에 포함되지 않습니다.
 
-GitHub 저장소는 `Cho-WH/scope-portal`입니다. Cloudflare Workers Static Assets 배포 설정을 추가했으며, 실제 배포·도메인 연결 완료는 별도로 확인해야 합니다. 빌드 명령은 `npm run build`, 배포 명령은 `npx wrangler deploy`, 미리보기 명령은 `npx wrangler preview`입니다. `wrangler.jsonc`는 `dist/`만 배포하고 `.node-version`은 Node 24를 지정합니다. 기존 실험 앱은 원래 공개 주소로 실행됩니다.
+배포 설정은 `wrangler.jsonc`와 `.node-version`에서 관리합니다. 빌드 명령은 `npm run build`, 배포 명령은 `npx wrangler deploy`, Cloudflare 미리보기 명령은 `npx wrangler preview`입니다. 상세 절차는 [배포·운영 현황](docs/deployment.md)을 참고하세요.

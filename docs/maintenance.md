@@ -153,6 +153,10 @@ npm run test:e2e
 
 ## 빌드와 배포 경계
 
-`npm run build` 결과는 `dist/`다. `wrangler.jsonc`는 Cloudflare Workers Static Assets에 이 폴더만 배포한다. `backups/`, `.agents/`, `docs/`, 테스트 결과를 배포하지 않는다. `.node-version`은 Node 24를 지정한다. 대시보드 프로젝트 이름은 `scope-portal`, 빌드 명령은 `npm run build`, 배포 명령은 `npx wrangler deploy`, 미리보기 명령은 `npx wrangler preview`를 사용한다. 저장소 루트에서 실행하며, 실제 배포 성공과 사용자 지정 도메인 활성화는 대시보드에서 별도로 확인한다.
+`npm run build` 결과는 `dist/`다. `wrangler.jsonc`는 Cloudflare Workers Static Assets에 이 폴더만 배포한다. `backups/`, `.agents/`, `docs/`, 테스트 결과를 배포하지 않는다. `.node-version`은 Node 24를 지정한다. 대시보드 프로젝트 이름은 `scope-portal`, 빌드 명령은 `npm run build`, 배포 명령은 `npx wrangler deploy`, Cloudflare 미리보기 명령은 `npx wrangler preview`를 사용한다. 저장소 루트에서 실행한다. 로컬 빌드 결과 확인용 `npm run preview`와 Cloudflare 미리보기 명령은 용도가 다르다.
+
+2026-10-23에 배포와 루트 도메인 연결을 완료하고 `https://sco.pe.kr`의 HTTPS 응답·포털 콘텐츠를 확인했다. 이후 변경은 필요한 검증을 거쳐 커밋·푸시하고 Cloudflare 빌드 로그와 실제 공개 주소를 확인한다. 로컬 수정이나 커밋만으로 공개 사이트가 바뀌지는 않는다. 상세 설정과 후속 확인 사항은 [배포·운영 현황](deployment.md)을 참고한다.
+
+장면 해시가 Windows에서는 맞고 Cloudflare에서만 실패하면 줄바꿈을 확인한다. `.gitattributes`는 미리보기 JSON·SVG를 LF로 고정하고 RGB 파일은 바이너리로 보존한다. 제작 도구도 문자열 출력을 LF로 정규화한 뒤 해시를 계산한다. 해시 검사를 끄거나 manifest의 해시만 임의로 바꾸지 말고 제작 도구로 재생성한다.
 
 실험 앱 주소를 옮기기 전에는 기존 공유 링크, 브라우저 저장 데이터와 기기 권한을 별도로 확인한다. 포털에 새 링크를 등록하는 것만으로 해당 데이터가 옮겨지지는 않는다.
