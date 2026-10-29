@@ -12,7 +12,7 @@
 | `mag.jpg` | https://cho-wh.github.io/MagnetometerBit/ | 장치 연결 전 대시보드, 측정값 없음 |
 | `malus.jpg` | https://cho-wh.github.io/MalussBit/ | 장치 연결 전 측정 제어·피팅 화면, 측정값 없음 |
 | `bme.jpg` | https://cho-wh.github.io/bme280/ | 장치 연결 전 대시보드, 측정값 없음 |
-| `sensor.jpg` | https://cho-wh.github.io/MicrobitSensorDashboard/ | 장치 연결 전 대시보드, 측정값 없음 |
+| `sensor.jpg` | `Cho-WH/MicrobitSensorDashboard` main `051faec`의 M5 빌드, 공식 주소 https://lab.sco.pe.kr/ | 2026-10-30, 1280×800 실험 선택 화면. 장치 연결·합성 측정값 없음 |
 
 소리 주파수 분석기(`peak`)는 마이크 대기와 빈 그래프만 표시되어 대표 이미지를 등록하지 않았다. 카드의 공통 플레이스홀더를 사용한다. 마이크·Bluetooth·USB 권한을 부여하지 않았고 측정 데이터를 합성하지 않았다. 센서 앱 이미지는 실제 측정 장면을 확보하면 교체할 수 있다.
 

@@ -1,21 +1,24 @@
 {
-  "name": "센서 데이터 대시보드",
-  "summary": "센서에 맞춰 측정 항목과 그래프 구성하기",
-  "description": "측정 항목과 단위를 설정하고 그래프와 기록을 구성합니다. 설정한 화면을 링크·QR로 공유할 수 있습니다.",
+  "name": "센서 실험실",
+  "summary": "센서를 선택하고 측정·저장·분석하기",
+  "description": "micro:bit 센서나 실험 활동을 선택하고 장비 준비부터 측정과 분석까지 이어 갑니다. 전체 실험 JSON으로 기록과 분석을 옮기고, 도구 소개를 링크·QR로 공유할 수 있습니다.",
   "topics": [
     "general"
   ],
   "activity": "measurement",
   "equipment": [
-    "micro:bit",
-    "사용할 센서"
+    "micro:bit V2",
+    "USB 케이블",
+    "활동에 필요한 외장 센서"
   ],
-  "environment": "Web Bluetooth 지원 브라우저",
-  "launchUrl": "https://cho-wh.github.io/MicrobitSensorDashboard/",
+  "environment": "USB 설치: WebUSB 지원 데스크톱 브라우저 · 무선 측정: Web Bluetooth 지원 브라우저",
+  "launchUrl": "https://lab.sco.pe.kr/",
   "sourceUrl": "https://github.com/Cho-WH/MicrobitSensorDashboard",
   "keywords": [
     "마이크로비트",
     "microbit",
+    "센서",
+    "JSON",
     "CSV",
     "데이터",
     "공유",
@@ -23,15 +26,16 @@
     "분석"
   ],
   "capabilities": [
-    "측정 항목·단위 설정",
-    "그래프와 측정 기록",
-    "설정 링크·QR 공유"
+    "센서별 장비 준비 안내",
+    "측정 기록과 그래프 분석",
+    "전체 실험 JSON 저장·열기",
+    "도구 링크·QR 공유"
   ],
   "order": 100,
   "draft": false,
   "thumbnail": {
     "src": "/images/tools/sensor.jpg",
-    "alt": "장치 연결을 기다리는 센서 데이터 대시보드 화면",
+    "alt": "내장 센서와 온도·기압 센서를 고르는 센서 실험실의 실험 선택 화면",
     "width": 1280,
     "height": 800,
     "fit": "cover",
