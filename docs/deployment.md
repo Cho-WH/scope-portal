@@ -1,60 +1,38 @@
-# 배포·운영 현황
+# 포털과 센서 실험실 배포 운영
 
-기준일: **2026-10-24**. 실제 확인한 상태와 후속 확인 사항을 구분하여 기록한다.
+**배포 변경 주관은 `Cho-WH/scope-portal`이다.** 이 문서는 `sco.pe.kr`과 `lab.sco.pe.kr`의 공통 운영 기준이다. 2026-11-04 기준 두 사이트 모두 Vercel에서 제공하며, 각각 자기 저장소의 `main`에서 빌드한다.
+
+## 변경 소유권
+
+| 변경 | 주관과 기록 위치 |
+| --- | --- |
+| 호스팅·도메인·DNS·HTTPS, 배포 플랫폼이나 자동 배포 방식 변경, 예비 호스팅 전환·복귀 | 포털 프로젝트가 영향 범위와 복구 방법을 정하고 전환을 주관한다. 두 사이트 중 하나만 바뀌어도 결정과 결과는 여기에 기록한다. |
+| 앱 기능·정적 파일 빌드·일상 릴리스 | 각 앱 저장소에서 검증하고 자체 `main`으로 배포한다. 센서 실험실의 경로·QR·저장 자료·펌웨어 검사는 [센서 실험실 배포 안내](https://github.com/Cho-WH/MicrobitSensorDashboard/blob/main/docs/m5-deployment.md)에서 관리한다. |
+| 배포 변경에 앱 설정 수정이 필요한 경우 | 포털에서 변경 방향을 정하고 해당 앱 저장소의 설정과 테스트에 반영한다. 공개 주소에서 확인한 뒤 양쪽 문서를 서로 연결한다. |
 
 ## 현재 구성
 
-| 항목 | 현재 상태 |
-| --- | --- |
-| 공개 주소 | https://sco.pe.kr |
-| GitHub 저장소 | https://github.com/Cho-WH/scope-portal |
-| 로컬 작업 폴더 | `C:\antigravity\work\edulink` (저장소 이름 변경 후에도 유지) |
-| 작업 브랜치 | `main` → `origin/main` |
-| 포털 | Astro 7.3.8 + TypeScript, 정적 출력 |
-| 호스팅 | Cloudflare Workers Static Assets, 프로젝트 `scope-portal` |
-| 도메인 등록·갱신 | 호스팅케이알 |
-| DNS 관리 | Cloudflare 네임서버 |
-| 루트 도메인 연결 | Worker 사용자 지정 도메인, 프로덕션 대상 |
-| 개별 실험 앱 | 기존 공개 주소에서 독립 운영 |
+| 서비스 | 운영 주소 | Vercel 프로젝트 | Cloudflare 예비 Worker |
+| --- | --- | --- | --- |
+| 과학 포털 | [sco.pe.kr](https://sco.pe.kr/) | `scope-portal` | `scope-portal` |
+| 센서 실험실 | [lab.sco.pe.kr](https://lab.sco.pe.kr/) | `scope-sensor-lab` | `sensor-lab` |
 
-```text
-로컬 수정 → GitHub에 푸시 → Cloudflare 빌드 → dist/ 배포
-                                                ↓
-                                         https://sco.pe.kr
-                                                ↓ 실행 링크
-                                       개별 실험 앱의 기존 주소
-```
+두 앱 모두 Node 24에서 `npm run build`로 만든 `dist/`를 제공한다. 센서 실험실은 `PUBLIC_BASE_URL=https://lab.sco.pe.kr/`로 공유 주소를 생성한다. 도메인 등록·갱신은 호스팅케이알, DNS는 Cloudflare, 운영 HTTPS 인증서 발급·갱신은 Vercel에서 관리한다.
 
-로컬 개발 서버를 끄더라도 공개 포털은 계속 제공된다. 도메인을 Cloudflare에 연결한 것은 등록 기관 이전이 아니므로 도메인 갱신은 계속 호스팅케이알에서 관리한다. N100 서버는 현재 포털 제공에 사용하지 않는다.
+## 배포 확인과 복구
 
-## 배포 설정
+1. 해당 저장소에서 변경 범위를 검증하고 `main`에 반영한다. Vercel의 해당 프로젝트에서 운영 배포의 커밋과 `Ready` 상태를 확인한다.
+2. 포털은 운영 주소에서 검색 → 도구 상세 → 실행 링크를 확인한다. 실험실은 운영 주소에서 입장과 변경된 센서·실험 경로를 확인한다. Cloudflare 예비 빌드 결과는 별도로 확인한다.
+3. 앱 변경에 문제가 있으면 해당 사이트의 마지막 정상 Vercel 배포로 복구하고 소스 변경도 정리한다. 호스팅 전환이 필요하면 포털 주관으로 해당 Worker의 버전과 정적 파일을 먼저 확인하고 현재 DNS 값을 기록한다.
+4. Cloudflare로 수동 전환할 때는 대상 호스트의 Vercel DNS 레코드를 제거하고 대응하는 Worker의 사용자 도메인으로 연결한다. 복귀할 때는 Worker 도메인 연결을 해제하고 Vercel 프로젝트에 표시된 권장 DNS 값을 `DNS only`로 복원한다. 양방향 모두 같은 공개 주소에서 HTTPS·앱 진입을 확인한다. 실험실의 공개 주소는 QR 링크와 브라우저 저장 자료의 기준이다.
 
-| 설정 | 값 |
-| --- | --- |
-| 저장소 루트 경로 | `/` |
-| Node.js | 24 (`.node-version`, `package.json` engines는 24 이상) |
-| 빌드 명령 | `npm run build` |
-| 배포 명령 | `npx wrangler deploy` |
-| Cloudflare 미리보기 명령 | `npx wrangler preview` |
-| 정적 파일 디렉터리 | `./dist` |
-| Wrangler 이름 | `scope-portal` |
-| compatibility_date | `2026-10-23` |
+## 2026-11-04 전환 기록
 
-`wrangler.jsonc`에는 이름·호환 날짜·정적 파일 디렉터리만 선언되어 있다. 사용자 지정 도메인은 Cloudflare 대시보드에서 연결했으며 아직 설정 파일에 선언하지 않았다. 추후 배포 설정을 코드로 옮길 때 이 연결을 함께 확인한다.
+포털 `7d833bb`과 실험실 `d9994b1` 배포 후 두 운영 주소에서 HTTPS 200과 ICN 응답을 확인했다. 당시 루트는 DNS only A 레코드 `216.198.79.1`, `64.29.17.1`, 실험실은 DNS only CNAME `882815932a61bf00.vercel-dns-017.com`이었다. 다음 전환 시에는 Vercel의 당시 권장값을 확인한다. 실험실은 저장한 예시 실험 다시 열기·QR·펌웨어 다운로드까지 확인했고 USB·Bluetooth 실기기 측정은 별도 확인 대상이다. [데스크톱 비교 결과](korea-region-plan.md)
 
-GitHub 연결 배포를 사용한다. 설정 과정에서 미리보기 빌드를 켜고 Cloudflare Access 보호는 끈 상태로 진행했다. 빌드용 API 토큰은 Cloudflare에서 자동 생성하는 방식을 사용했으며 토큰 값을 저장소에 넣지 않는다. GitHub 앱에서 저장소가 보이지 않으면 설치된 **Cloudflare Workers and Pages** 앱의 저장소 접근 목록에 `scope-portal`이 포함되어 있는지 확인한다.
+## 이전 Cloudflare 운영 기록 (2026-10)
 
-## 변경 후 공개하는 순서
-
-1. 도구 정보는 `src/content/tools/`, 자료는 `src/content/resources/`에서 수정한다. 구현 변경은 [유지보수 가이드](maintenance.md)를 따른다.
-2. 변경 범위에 맞춰 콘텐츠 검사·타입 검사·빌드를 수행하고, UI나 상호작용 변경에는 해당 브라우저 검증을 추가한다. 문서만 바꿀 때는 앱 전체 테스트를 반복하지 않는다.
-3. 변경 내용을 검토하고 커밋·푸시한다. 로컬 저장이나 커밋만으로는 공개 사이트에 반영되지 않는다.
-4. Cloudflare `Workers & Pages → scope-portal`에서 배포 대상 브랜치·커밋과 빌드 성공 여부를 확인한다. 프로덕션 브랜치 설정은 대시보드가 기준이다.
-5. 공개 주소에서 바뀐 내용과 영향을 받는 링크를 확인한다. Cloudflare 배포 성공과 실제 페이지 확인을 구분한다.
-
-실패하면 빌드 로그의 첫 오류부터 확인한다. 배포 후 문제가 생기면 원인을 확인한 뒤 수정하거나, 해당 변경을 되돌리는 커밋을 만들어 재배포한다. DNS를 이전 IP로 돌리는 것을 일반적인 코드 복구 수단으로 사용하지 않는다.
-
-## 도메인 연결 기록
+### 도메인 연결 기록
 
 루트 도메인 추가 시 다음 오류가 발생했다.
 
@@ -67,7 +45,7 @@ Delete them first or try a different hostname.
 
 DNS 화면에는 `www.sco.pe.kr → sco.pe.kr` CNAME도 있었으며 삭제 대상으로 안내하지 않았다. **이 CNAME만으로 www의 Worker 연결·인증서·리디렉션까지 완료되었다고 간주하지 않는다.** www 지원 여부와 대표 주소로의 이동 정책은 후속 확인 사항이다.
 
-## 빌드 장애와 해결 기록
+### 빌드 장애와 해결 기록
 
 초기 Linux 빌드에서 `gas: 장면 파일 해시 불일치`로 콘텐츠 검증이 실패했다. Windows에서 생성한 SVG의 CRLF 줄바꿈과 Git에 저장된 LF 줄바꿈이 달라 파일 해시가 바뀐 것이 원인이었다.
 
@@ -81,7 +59,7 @@ DNS 화면에는 `www.sco.pe.kr → sco.pe.kr` CNAME도 있었으며 삭제 대�
 - `fc036eb`: Workers Static Assets 배포 설정 추가.
 - `ebc8894`: 플랫폼 간 미리보기 파일 줄바꿈·해시 일치 수정.
 
-## 공개 사이트 확인 결과와 남은 범위
+### 공개 사이트 확인 결과와 남은 범위
 
 ### 기존 GitHub Pages 해제 (2026-10-24)
 

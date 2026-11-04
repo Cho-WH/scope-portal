@@ -4,12 +4,12 @@
 
 ## 현재 운영 상태
 
-2026-10-23 기준, Cloudflare Workers Static Assets로 배포하여 **[sco.pe.kr](https://sco.pe.kr)**에서 공개 중입니다. HTTPS 응답 `200 OK`와 페이지 제목·대표 도구 콘텐츠를 확인했습니다. 기능과 콘텐츠는 계속 개선 중이며, 개별 실험 앱은 기존 공개 주소에서 독립적으로 운영합니다.
+2026-11-04 기준, Vercel로 배포하여 **[sco.pe.kr](https://sco.pe.kr)**에서 공개 중입니다. HTTPS 응답 `200 OK`와 페이지 제목·대표 도구 콘텐츠를 확인했습니다. 기능과 콘텐츠는 계속 개선 중이며, 개별 실험 앱은 기존 공개 주소에서 독립적으로 운영합니다.
 
 - 저장소: [Cho-WH/scope-portal](https://github.com/Cho-WH/scope-portal), 로컬 폴더는 기존 `edulink` 이름을 유지합니다.
 - 배포 프로젝트: `scope-portal`. GitHub 연결을 통해 빌드하고 `dist/`를 배포합니다.
-- 도메인 등록·갱신: 호스팅케이알. DNS·HTTPS·포털 제공: Cloudflare.
-- 배포 설정, 확인 범위, 장애 해결 기록과 후속 작업: [배포·운영 현황](docs/deployment.md).
+- 도메인 등록·갱신: 호스팅케이알. DNS 관리: Cloudflare. HTTPS·포털 제공: Vercel.
+- 포털과 센서 실험실의 배포 변경은 이 프로젝트가 주관합니다. 운영 기준과 복구 절차: [배포·운영 현황](docs/deployment.md).
 
 ## 시작
 
@@ -81,4 +81,4 @@ npm run test:e2e
 
 `backups/edulink-2026-10-14/`에 이전 파일과 로컬 지침·스킬을 보관했습니다. `backup-manifest.json`에는 원본과 대조한 SHA-256 해시가 있습니다. Git 이력은 현재 `.git`에 그대로 유지됩니다. 백업은 `public/`이나 `dist/`에 포함되지 않습니다.
 
-배포 설정은 `wrangler.jsonc`와 `.node-version`에서 관리합니다. 빌드 명령은 `npm run build`, 배포 명령은 `npx wrangler deploy`, Cloudflare 미리보기 명령은 `npx wrangler preview`입니다. 상세 절차는 [배포·운영 현황](docs/deployment.md)을 참고하세요.
+Cloudflare 예비 배포 설정은 `wrangler.jsonc`와 `.node-version`에서 관리합니다. 빌드 명령은 `npm run build`, 배포 명령은 `npx wrangler deploy`, Cloudflare 미리보기 명령은 `npx wrangler preview`입니다. 상세 절차는 [배포·운영 현황](docs/deployment.md)을 참고하세요.
