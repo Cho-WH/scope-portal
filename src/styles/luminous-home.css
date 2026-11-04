@@ -1,0 +1,97 @@
+html.luminous-home {
+  color-scheme: light;
+  --launch-blue: #bdd4ff;
+  --color-paper: #f6f8fc;
+  --color-ink: #0b1f3b;
+  --color-muted: #53657d;
+  --color-line: #e1e8f2;
+  --list-divider: #aebfd4;
+  --color-mist: #eef3fa;
+  --color-accent: #1c55cf;
+  --color-on-accent: #fff;
+}
+
+.luminous-home body {
+  min-height: 100vh;
+  background: linear-gradient(145deg, #f4f8fe, #e9eff9);
+}
+
+.luminous-home body :is(.catalog, .site-footer) {
+  border-block: 0;
+}
+
+.luminous-home body .site-header {
+  border-bottom-color: var(--list-divider);
+}
+
+.luminous-home body .brand span {
+  color: #5383c8;
+}
+
+.luminous-home body .site-header nav a {
+  color: #234878;
+}
+
+.luminous-home body .site-header nav a:is(:hover, :focus-visible) {
+  text-decoration: underline 2px var(--color-accent);
+  text-underline-offset: 6px;
+}
+
+.luminous-home body .featured-banner {
+  color-scheme: dark;
+  --color-paper: #0b1f3b;
+  --color-ink: #f6f8fc;
+  --color-muted: #c6d5e9;
+  --color-accent: var(--launch-blue);
+  --color-on-accent: #0b1f3b;
+  color: var(--color-ink);
+  padding: clamp(16px, 2vw, 26px);
+  border-radius: 20px;
+  background: radial-gradient(ellipse at 85% 75%, #253d60, transparent 62%), #0b1f3b;
+}
+
+.luminous-home body [data-tool-id='circuit'] .tool-image img {
+  object-fit: contain;
+}
+
+.luminous-home body .tool-card {
+  border-bottom-color: var(--list-divider);
+}
+
+.luminous-home body .resource {
+  padding: 16px;
+  border: 1px solid var(--color-line);
+  border-radius: 18px;
+  background: linear-gradient(145deg, #fff, #fbfcff);
+  box-shadow: 0 2px 5px #0b1f3b0a, 0 10px 24px #0b1f3b12, inset 0 1px 0 #fff;
+}
+
+.luminous-home body .resource:focus-within {
+  border-color: #8aaef1;
+  background: linear-gradient(145deg, #fff, #edf4ff);
+}
+
+.luminous-home body .tool-actions .button {
+  color: #234878;
+  background: color-mix(in srgb, var(--launch-blue) 40%, white);
+  border-color: transparent;
+}
+
+.luminous-home body .tool-actions .button[target='_blank']::after {
+  content: '↗';
+}
+
+.luminous-home body .tool-actions .button:focus-visible {
+  outline: 3px solid #246bfd;
+  outline-offset: 3px;
+}
+
+@media (hover: hover) {
+  .luminous-home body .resource:hover {
+    border-color: #8aaef1;
+    background: linear-gradient(145deg, #fff, #edf4ff);
+  }
+  .luminous-home body .tool-actions .button:hover {
+    background: color-mix(in srgb, var(--launch-blue) 55%, white);
+  }
+}

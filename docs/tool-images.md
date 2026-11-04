@@ -4,7 +4,7 @@
 
 | 파일 | 실행 화면 출처 | 캡처 상태 |
 | --- | --- | --- |
-| `circuit.jpg` | https://cho-wh.github.io/circuit/ | 빠른 시작 닫기 → 분석하기 → 3D. 기본 직렬 회로의 전위 화면 |
+| `circuit-luminous.png` | https://cho-wh.github.io/circuit/ | 빠른 시작 닫기 → 분석하기 → 3D. 기본 직렬 회로의 전위 화면. 카드용 캡처에서만 전위선 굵기를 2.5배로 조정 |
 | `waves.jpg` | https://cho-wh.github.io/interference/ | 일시 정지 후 파동·파원·관측점 영역 |
 | `gas.jpg` | https://cho-wh.github.io/bme280/gay-lussac/ | 시작 화면의 실험 장치 그림 |
 | `cds.jpg` | https://cho-wh.github.io/CdS/ | 해당 페이지의 `cds2d.png` 배선도 요소를 캡처 |

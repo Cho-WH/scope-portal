@@ -1,4 +1,5 @@
 ---
+import '../styles/luminous-home.css';
 import PortalLayout from '../layouts/PortalLayout.astro';
 import FeaturedBanner from '../features/featured/FeaturedBanner.astro';
 import ToolCatalog from '../features/catalog/ToolCatalog.astro';
@@ -6,7 +7,7 @@ import ResourceList from '../components/resources/ResourceList.astro';
 import { loadCatalog } from '../lib/catalog/load';
 const { tools, resources, featured } = await loadCatalog();
 ---
-<PortalLayout>
+<PortalLayout luminousHome>
   <h1 class="sr-only">sco.pe.kr 과학 실험·측정 도구</h1>
   <FeaturedBanner tools={featured} />
   <ToolCatalog tools={tools} />
