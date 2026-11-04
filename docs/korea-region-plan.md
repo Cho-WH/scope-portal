@@ -21,3 +21,7 @@
 Vercel을 사용하기 시작하면 몇 차례 사용한 뒤 데스크톱에서 팀의 Usage 화면을 열어 `Fast Data Transfer`를 한 번 확인한다. 이후에는 큰 수업 행사가 있거나 기본 사용량 알림이 왔을 때 추이를 살펴보면 된다. 두 사이트를 같은 팀에 두면 팀 합계를 본다. [Vercel 사용량 안내](https://vercel.com/docs/pricing/manage-and-optimize-usage)
 
 무료 한도에 가까워지면 어느 사이트나 파일의 전송량이 늘었는지 먼저 본다. 필요할 때 해당 사이트의 최신 빌드를 Cloudflare에서 확인하고 운영 주소를 수동으로 되돌린다. 정적 사이트를 두 호스팅에 배포해 DNS로 복구한 운영 사례도 있다. **95GB 감지와 자동 전환·복귀는 한도에 자주 근접해 수동 대응이 부담될 때 다시 검토한다.** [수동 전환 사례](https://brianli.com/2020/12/hosting-on-cloudflare-workers-sites-and-vercel/)
+
+### N100 일일 확인 인계
+
+매일 오전 9시 팀 전송량을 확인하는 작업은 [N100 관리 에이전트 인계서](n100-vercel-usage-handoff.md)에 정리했다. 서버 설치와 알림 운영은 N100 측이 맡고, 경고 이후의 배포 결정은 포털이 맡는다. 현재는 설치 전이다.
