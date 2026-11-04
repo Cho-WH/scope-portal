@@ -1,5 +1,5 @@
 export type Point = [number, number];
-export type SceneId = 'circuit' | 'waves' | 'gas';
+export type SceneId = 'circuit' | 'waves' | 'gas' | 'sensor';
 export interface BaseData {
   schemaVersion: 1;
   scene: SceneId;
@@ -48,7 +48,12 @@ export interface GasData extends BaseData {
   xTicks: { value: string; point: Point }[];
   yTicks: { value: string; point: Point }[];
 }
-export type SceneData = CircuitData | WavesData | GasData;
+export interface SensorData extends BaseData {
+  scene: 'sensor';
+  points: Point[];
+  trend: Point[];
+}
+export type SceneData = CircuitData | WavesData | GasData | SensorData;
 export interface PreviewScene {
   durationMs: number;
   renderAt(timeMs: number): void;

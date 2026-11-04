@@ -31,14 +31,8 @@
   "notes": [
     "장시간·가열 실험과 일부 장치 동작, 학생·교사 사용성은 추가 검증 중입니다."
   ],
-  "order": 30,
+  "order": 35,
   "draft": false,
-  "featured": {
-    "order": 30,
-    "shortLabel": "게이뤼삭",
-    "headline": "공기를 데우면\n압력은 어떻게 될까요?",
-    "description": "온도와 압력의 변화를 함께 기록해 보세요.\n그래프에서 두 값의 관계를 찾아볼 수 있어요."
-  },
   "preview": {
     "kind": "baked-scene",
     "scene": "gas",

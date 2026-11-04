@@ -76,11 +76,11 @@ test('대표 도구는 수동 탭으로 전환되며 선택한 장면만 생성�
   await expect(page.locator('canvas')).toHaveCount(1);
   await expect(page.locator('input[type="range"], iframe, video')).toHaveCount(0);
   await page.keyboard.press('End');
-  await expect(page.locator('#feature-tab-gas')).toBeFocused();
-  await expect(page.locator('figure[data-scene="gas"]')).toHaveAttribute('data-playback', 'playing');
+  await expect(page.locator('#feature-tab-sensor')).toBeFocused();
+  await expect(page.locator('figure[data-scene="sensor"]')).toHaveAttribute('data-playback', 'playing');
   await expect(page.locator('figure[data-preview]')).toHaveCount(1);
   await expect(page.locator('canvas')).toHaveCount(0);
-  await expect(page.locator('#feature-panel-gas svg').getByText('예시 데이터', { exact: true })).toHaveCount(0);
+  await expect(page.locator('#feature-panel-sensor a[href="https://lab.sco.pe.kr/"]').first()).toBeVisible();
 });
 
 test('첫 줄은 3열 이미지형, 다음 줄은 2열 오른쪽 이미지형이며 검색 후 복원된다', async ({ page }) => {
@@ -110,25 +110,16 @@ test('첫 줄은 3열 이미지형, 다음 줄은 2열 오른쪽 이미지형이
   await expect(page.locator('[data-card-variant="featured"]')).toHaveCount(3);
 });
 
-test('모바일에서는 미리보기를 생성하거나 이미지를 요청하지 않는다', async ({ browser }) => {
-  const context = await browser.newContext({ viewport: { width: 360, height: 800 }, isMobile: true, hasTouch: true });
-  const page = await context.newPage();
-  const posters: string[] = [];
-  page.on('request', request => { if (/\/(images\/)?previews\//.test(request.url())) posters.push(request.url()); });
-  await page.goto('http://127.0.0.1:4322/');
-  await expect(page.locator('[data-featured]')).toHaveAttribute('data-ready', 'true');
-  await expect(page.locator('figure[data-preview]')).toHaveCount(0);
-  await page.locator('#feature-tab-gas').tap();
-  await expect(page.locator('#feature-panel-gas')).toBeVisible();
-  await expect(page.locator('figure[data-preview]')).toHaveCount(0);
-  expect(posters).toEqual([]);
-  const banner = await page.locator('[data-featured]').boundingBox();
-  expect(banner!.height).toBeLessThan(300);
-  await page.setViewportSize({ width: 1024, height: 900 });
-  await expect(page.locator('figure[data-preview]')).toHaveCount(1);
+test('모바일에서도 선택한 장면을 터치로 전환하고 일시 정지한다', async ({ page }) => {
   await page.setViewportSize({ width: 360, height: 800 });
-  await expect(page.locator('figure[data-preview]')).toHaveCount(0);
-  await context.close();
+  await page.goto('/');
+  await page.locator('#feature-tab-sensor').click();
+  const scene = page.locator('figure[data-scene="sensor"]');
+  await expect(scene).toHaveAttribute('data-playback', 'playing');
+  await scene.getByRole('button', {name:'일시 정지'}).click();
+  await expect(scene).toHaveAttribute('data-playback', 'paused');
+  await page.setViewportSize({ width: 1024, height: 900 });
+  await expect(scene).toHaveAttribute('data-playback', 'paused');
 });
 
 test('반응형 화면과 상세 페이지에 가로 넘침이 없다', async ({ page }) => {

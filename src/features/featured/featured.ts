@@ -25,7 +25,6 @@ document.querySelectorAll<HTMLElement>('[data-featured]').forEach(root => {
   let loadingPreview: Promise<void> | undefined;
   function syncPreview() {
     if (previewManager) { previewManager.sync(); return; }
-    if (!desktop.matches) return;
     loadingPreview ??= import('../preview/controller').then(({createPreviewManager}) => {
       previewManager = createPreviewManager(root);
       previewManager.sync();

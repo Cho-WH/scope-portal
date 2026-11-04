@@ -87,6 +87,9 @@ export function checkScene(data: SceneData) {
       [...data.xTicks, ...data.yTicks].every((t) => point(t.point)),
       '잘못된 그래프 축',
     );
+  } else if (data.scene === 'sensor') {
+    requireValid(data.points.length === 6 && data.points.every(point) &&
+      data.trend.length === 2 && data.trend.every(point), '잘못된 센서 산점도');
   } else throw new Error('알 수 없는 장면');
 }
 export async function validatePreview(root: string, tool: Tool) {

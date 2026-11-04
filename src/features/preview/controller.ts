@@ -4,13 +4,11 @@ const factories = {
   circuit: () => import('./scenes/circuit'),
   waves: () => import('./scenes/waves'),
   gas: () => import('./scenes/gas'),
+  sensor: () => import('./scenes/sensor'),
 };
-type Playback = { elapsed: number; paused: boolean; ended: boolean; explicit: boolean };
+type Playback = { elapsed: number; paused: boolean; ended: boolean };
 
 export function createPreviewManager(root: HTMLElement) {
-  const desktop = matchMedia('(min-width: 680px)'),
-    spacious = matchMedia('(min-width: 960px)'),
-    reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const records = new Map<string, Playback>();
   let selectedId: string | undefined;
   let mounted: HTMLElement | null = null,
@@ -32,7 +30,7 @@ export function createPreviewManager(root: HTMLElement) {
     if (!mounted || !state) return;
     const button = mounted.querySelector<HTMLButtonElement>('[data-preview-control]');
     if (!button) return;
-    button.hidden = !spacious.matches;
+    button.hidden = false;
     button.disabled = loadingScene;
     button.textContent = loadingScene
       ? '불러오는 중…'
@@ -60,9 +58,7 @@ export function createPreviewManager(root: HTMLElement) {
       !state.paused &&
       !state.ended &&
       visible &&
-      !document.hidden &&
-      desktop.matches &&
-      spacious.matches
+      !document.hidden
     );
   }
   function tick(now: number) {
@@ -173,10 +169,10 @@ export function createPreviewManager(root: HTMLElement) {
     if (id && id !== selectedId) {
       // A deliberate tab change starts a fresh scene, including return visits.
       // Resizing, scrolling and pageshow keep the current scene's playback position.
-      records.set(id, { elapsed: 0, paused: false, ended: false, explicit: false });
+      records.set(id, { elapsed: 0, paused: false, ended: false });
       selectedId = id;
     }
-    if (!desktop.matches || !host) {
+    if (!host) {
       unmount();
       return;
     }
@@ -191,12 +187,8 @@ export function createPreviewManager(root: HTMLElement) {
     mounted = host.querySelector<HTMLElement>('figure');
     if (!mounted?.dataset.scene) return;
     state = records.get(id!)!;
-    if (reduced.matches && !state.explicit) {
-      state.ended = true;
-      state.paused = true;
-    }
     paintControl();
-    if (spacious.matches && (!reduced.matches || state.explicit)) void load();
+    void load();
   }
   root.addEventListener('click', (event) => {
     if (
@@ -205,7 +197,6 @@ export function createPreviewManager(root: HTMLElement) {
       !state
     )
       return;
-    state.explicit = true;
     if (!scene) {
       state.elapsed = 0;
       state.ended = false;
@@ -231,22 +222,6 @@ export function createPreviewManager(root: HTMLElement) {
   );
   observer.observe(root);
   document.addEventListener('visibilitychange', schedule);
-  const changeMode = () => {
-    unmount();
-    sync();
-  };
-  spacious.addEventListener('change', changeMode);
-  reduced.addEventListener('change', () => {
-    if (reduced.matches) {
-      // A newly enabled preference also applies to previously visited scenes.
-      for (const record of records.values()) {
-        record.ended = true;
-        record.paused = true;
-        record.explicit = false;
-      }
-    }
-    changeMode();
-  });
   window.addEventListener('pagehide', () => {
     stop();
     loading?.abort();

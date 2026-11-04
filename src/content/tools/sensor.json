@@ -1,47 +1,63 @@
 {
   "name": "센서 실험실",
-  "summary": "센서를 선택하고 측정·저장·분석하기",
-  "description": "micro:bit 센서나 실험 활동을 선택하고 장비 준비부터 측정과 분석까지 이어 갑니다. 전체 실험 JSON으로 기록과 분석을 옮기고, 도구 소개를 링크·QR로 공유할 수 있습니다.",
+  "summary": "micro:bit로 직접 측정하고 그래프와 관찰 기록 남기기",
+  "description": "무엇을 알아보고 싶은가요? 실험에 맞는 센서를 고르면 micro:bit를 준비하고 연결하는 방법을 차례로 안내해요. 측정을 시작하면 값이 실시간 그래프에 쌓입니다. 그래프가 달라진 순간에 무엇을 했는지 메모해 두고, 그 기록을 바탕으로 실험 결과를 내 말로 설명해 보세요.",
   "topics": [
     "general"
   ],
   "activity": "measurement",
   "equipment": [
     "micro:bit V2",
-    "USB 케이블",
-    "활동에 필요한 외장 센서"
+    "활동에 따라 외장 센서"
   ],
-  "environment": "USB 설치: WebUSB 지원 데스크톱 브라우저 · 무선 측정: Web Bluetooth 지원 브라우저",
+  "environment": "연결은 Web Bluetooth, 프로그램 설치는 WebUSB 지원 브라우저",
   "launchUrl": "https://lab.sco.pe.kr/",
   "sourceUrl": "https://github.com/Cho-WH/MicrobitSensorDashboard",
   "keywords": [
     "마이크로비트",
     "microbit",
-    "센서",
-    "JSON",
     "CSV",
     "데이터",
     "공유",
     "QR",
-    "분석"
+    "분석",
+    "센서 데이터 대시보드",
+    "자기장",
+    "온도",
+    "가속도",
+    "밝기"
   ],
   "capabilities": [
-    "센서별 장비 준비 안내",
-    "측정 기록과 그래프 분석",
-    "전체 실험 JSON 저장·열기",
-    "도구 링크·QR 공유"
+    "센서별 안내에 따라 micro:bit 준비하고 연결하기",
+    "저장한 실험을 다시 열어 그래프와 메모 함께 살펴보기",
+    "측정값은 CSV로, 전체 실험 기록은 JSON으로 저장하기"
   ],
-  "order": 100,
+  "order": 30,
   "draft": false,
   "thumbnail": {
-    "src": "/images/tools/sensor.jpg",
-    "alt": "내장 센서와 온도·기압 센서를 고르는 센서 실험실의 실험 선택 화면",
-    "width": 1280,
-    "height": 800,
-    "fit": "cover",
-    "focalPoint": {
-      "x": 70,
-      "y": 40
+    "src": "/images/tools/sensor-lab-social.png",
+    "alt": "micro:bit 센서 실험실의 장비 준비·측정·분석 화면",
+    "width": 1200,
+    "height": 630,
+    "fit": "contain"
+  },
+  "featured": {
+    "order": 30,
+    "headline": "내 책상도\n과학 실험실이 될까요?",
+    "description": "센서를 골라 micro:bit로 측정해 보세요.\n실시간 그래프를 보며 측정하고 분석하세요.",
+    "shortLabel": "센서 실험실"
+  },
+  "preview": {
+    "kind": "baked-scene",
+    "scene": "sensor",
+    "revision": "1",
+    "manifest": "/previews/sensor/1/manifest.json",
+    "poster": {
+      "src": "/images/previews/sensor-final.svg",
+      "alt": "micro:bit에서 태블릿으로 보낸 여섯 예시 측정값과 상승 추세선, 같은 화면에서 작성하는 관찰 기록",
+      "width": 1200,
+      "height": 480,
+      "fit": "contain"
     }
   }
 }

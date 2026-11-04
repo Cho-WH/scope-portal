@@ -38,8 +38,8 @@ export const toolSchema = z.object({
   }).optional(),
   preview: z.discriminatedUnion('kind', [
     z.object({ kind: z.literal('placeholder'), poster: poster.optional() }),
-    z.object({ kind: z.literal('baked-scene'), scene: z.enum(['circuit', 'waves', 'gas']),
-      revision: z.string().regex(/^\d+$/), manifest: z.string().regex(/^\/previews\/(circuit|waves|gas)\/\d+\/manifest\.json$/), poster }),
+    z.object({ kind: z.literal('baked-scene'), scene: z.enum(['circuit', 'waves', 'gas', 'sensor']),
+      revision: z.string().regex(/^\d+$/), manifest: z.string().regex(/^\/previews\/(circuit|waves|gas|sensor)\/\d+\/manifest\.json$/), poster }),
   ]).optional(),
 }).strict();
 

@@ -40,8 +40,9 @@ test('누락·오타·실행 가능한 스킴을 콘텐츠 경계에서 거부�
   assert.equal(toolSchema.safeParse({ ...raw, name: '' }).success, false);
 });
 test('대표 도구 순서 중복과 자료의 잘못된 연결을 감지한다', () => {
-  const duplicate = { ...tool, id: 'another' };
-  assert(catalogErrors([tool, duplicate], []).some(e => e.includes('순서 중복')));
+  const featured = { ...toolSchema.parse(read('../../src/content/tools/sensor.json')), id: 'sensor' };
+  const duplicate = { ...featured, id: 'another' };
+  assert(catalogErrors([featured, duplicate], []).some(e => e.includes('순서 중복')));
   const resource = { ...resourceSchema.parse(read('../../src/content/resources/gas-setup.json')), id: 'setup', toolIds: ['missing'] };
   assert(catalogErrors([tool], [resource]).some(e => e.includes('없는 도구')));
   assert(catalogErrors([{ ...tool, draft: true }], [{ ...resource, toolIds: ['gas'] }]).some(e => e.includes('비공개 도구')));

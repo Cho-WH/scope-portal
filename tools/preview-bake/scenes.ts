@@ -28,6 +28,8 @@ import { paletteTable } from '@interference/src/visual/field-palettes';
 import { linearFit, predict } from '@bme280/gay-lussac/analysis/regression.js';
 import equipmentSource from '@bme280/gay-lussac/assets/setup.svg';
 import { waveConditionMarkup } from '../../src/features/preview/scenes/wave-condition';
+import { sensorPoster } from '../../src/features/preview/scenes/sensor-art';
+import type { Point } from '../../src/features/preview/types';
 
 const round = (v: number) => Math.round(v * 1000) / 1000;
 const close = (a: number, b: number, tolerance = 1e-8) =>
@@ -438,11 +440,25 @@ function gasScene() {
   return { data, poster, files: { 'equipment.svg': equipment } };
 }
 
+function sensorScene() {
+  // Illustrative readings, not captured measurements. Fit once when authoring.
+  const samples = [1, 3.2, 2.4, 5.8, 4.9, 7.6].map((y,x) => ({x,y}));
+  const fit = linearFit(samples);
+  assert.equal(fit.reason, null);
+  const project = (x:number, y:number): Point => [round(-128+x*53), round(70-y*17)];
+  const points = samples.map(({x,y}) => project(x,y));
+  const trend = [0,5].map(x => project(x,predict(fit,x)));
+  const data = {schemaVersion:1, scene:'sensor', durationMs:7750, viewBox:[1200,480],
+    physics:{example:true, samples, fit}, points, trend};
+  return {data, poster:svg(sensorPoster(points,trend)), files:{}};
+}
+
 export async function bakeAll(root: string, sources: any) {
   for (const [id, make] of Object.entries({
     circuit: circuitScene,
     waves: wavesScene,
     gas: gasScene,
+    sensor: sensorScene,
   })) {
     const { data, poster: rawPoster, files } = make();
     // Normalize source checkout line endings before both writing and hashing.
@@ -471,7 +487,7 @@ export async function bakeAll(root: string, sources: any) {
       viewBox: data.viewBox,
       data: `/previews/${id}/1/scene.json`,
       files: entries,
-      source: sources[id === 'waves' ? 'interference' : id === 'gas' ? 'bme280' : id],
+      source: sources[id === 'waves' ? 'interference' : id === 'gas' || id === 'sensor' ? 'bme280' : id],
       generator: 'preview-bake/1',
       inputHash: sha(JSON.stringify(data.physics)),
       poster: { src: posterPath, sha256: sha(poster) },

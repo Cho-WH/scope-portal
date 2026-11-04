@@ -44,7 +44,8 @@ const { tools } = Astro.props;
     .featured-banner { margin: 16px 0 18px; }
     .feature-tabs { gap: 14px; margin-top: 6px; }
     .feature-tabs button { min-width: 44px; }
-    .label-long, .feature-preview { display: none; }
+    .label-long { display: none; }
+    .feature-preview { position: relative; inset: auto; width: 100%; height: clamp(132px, 43vw, 205px); margin-top: 6px; }
     .label-short { display: inline; }
     .feature-panel { display: block; min-height: 0; padding: 0; }
     .feature-copy h2 { font-size: 27px; line-height: 1.25; letter-spacing: -.8px; }

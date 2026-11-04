@@ -8,7 +8,7 @@ import type { Tool } from '../../src/lib/catalog/schema.ts';
 const read = async (path: string) => JSON.parse(await readFile(resolve(path), 'utf8'));
 
 test('해시 대상 텍스트는 운영체제와 관계없이 LF 줄바꿈으로 저장된다', async () => {
-  for (const id of ['circuit', 'waves', 'gas']) {
+  for (const id of ['circuit', 'waves', 'gas', 'sensor']) {
     const manifest = await read(`public/previews/${id}/1/manifest.json`);
     for (const asset of [...manifest.files, manifest.poster]) {
       if (asset.src.endsWith('.rgb')) continue;
@@ -18,8 +18,8 @@ test('해시 대상 텍스트는 운영체제와 관계없이 LF 줄바꿈으로
   }
 });
 
-test('배포할 세 장면의 파일·해시·종류·좌표가 일치한다', async () => {
-  for (const id of ['circuit', 'waves', 'gas']) {
+test('배포할 네 장면의 파일·해시·종류·좌표가 일치한다', async () => {
+  for (const id of ['circuit', 'waves', 'gas', 'sensor']) {
     const tool: Tool = await read(`src/content/tools/${id}.json`);
     await validatePreview(process.cwd(), tool);
   }

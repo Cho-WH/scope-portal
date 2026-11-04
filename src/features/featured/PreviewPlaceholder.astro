@@ -4,7 +4,7 @@ interface Props { tool: Tool }
 const { tool } = Astro.props;
 const poster = tool.preview?.poster;
 ---
-<!-- Inert until the desktop media query matches. Mobile does not request the poster. -->
+<!-- Only the selected tab mounts its poster. -->
 <template data-preview-template>
   <figure class="preview-placeholder" data-preview="placeholder">
     <div class:list={['preview-poster', { 'preview-poster-contain': poster?.fit === 'contain' }]} style={`--preview-x: ${poster?.focalPoint?.x ?? 50}%; --preview-y: ${poster?.focalPoint?.y ?? 50}%;`}>
