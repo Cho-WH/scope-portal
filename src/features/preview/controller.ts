@@ -183,7 +183,7 @@ export function createPreviewManager(root: HTMLElement) {
     unmount();
     const template = host.querySelector<HTMLTemplateElement>('[data-preview-template]');
     if (!template) return;
-    host.append(template.content.cloneNode(true));
+    if (!host.querySelector('figure')) host.append(template.content.cloneNode(true));
     mounted = host.querySelector<HTMLElement>('figure');
     if (!mounted?.dataset.scene) return;
     state = records.get(id!)!;

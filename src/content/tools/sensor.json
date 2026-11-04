@@ -35,7 +35,7 @@
   "order": 30,
   "draft": false,
   "thumbnail": {
-    "src": "/images/tools/sensor-lab-social.png",
+    "src": "/images/tools/sensor-lab-social.webp",
     "alt": "micro:bit 센서 실험실의 장비 준비·측정·분석 화면",
     "width": 1200,
     "height": 630,

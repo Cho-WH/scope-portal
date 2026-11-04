@@ -51,7 +51,7 @@
     }
   },
   "thumbnail": {
-    "src": "/images/tools/circuit-luminous.png",
+    "src": "/images/tools/circuit-luminous.webp",
     "alt": "직렬 회로의 전압과 저항을 살펴보는 회로봄 실제 분석 화면",
     "width": 785,
     "height": 522,

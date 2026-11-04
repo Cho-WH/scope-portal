@@ -14,6 +14,21 @@ const { tools } = Astro.props;
     </div>
     <div class="feature-preview" data-preview-host><Preview tool={tool} /></div>
   </div>)}
+  <script is:inline>
+    // Materialize only the linked panel's poster while parsing the static home.
+    {
+      const panels = [...document.currentScript.parentElement.querySelectorAll('[data-feature-panel]')];
+      const feature = new URLSearchParams(location.search).get('feature');
+      const active = panels.find(panel => panel.dataset.featurePanel === feature) || panels[0];
+      for (const panel of panels) panel.hidden = panel !== active;
+      const template = active.querySelector('[data-preview-template]');
+      if (template) {
+        const content = template.content.cloneNode(true);
+        content.querySelector('img').fetchPriority = 'high';
+        template.after(content);
+      }
+    }
+  </script>
   <div class="feature-tabs" role="tablist" aria-label="대표 도구 선택">
     {tools.map((tool, i) => <button type="button" role="tab" id={`feature-tab-${tool.id}`} aria-controls={`feature-panel-${tool.id}`} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1} data-feature-id={tool.id}>
       <span class="label-long">{tool.name}</span><span class="label-short">{tool.featured!.shortLabel}</span>
